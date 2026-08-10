@@ -1,0 +1,48 @@
+.field {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  bottom: -5%;
+  border-radius: 50% 0 50% 50%;
+  opacity: 0;
+  animation-name: drift-up;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  will-change: transform, opacity;
+}
+
+.petal {
+  background: linear-gradient(140deg, #e6cd7d, #a12c3d 70%);
+}
+
+.gold {
+  border-radius: 50%;
+  background: radial-gradient(circle, #faf1d6 0%, #cda037 70%, transparent 100%);
+}
+
+.ember {
+  border-radius: 50%;
+  background: radial-gradient(circle, #ffe1a8 0%, #ff9d4d 60%, transparent 100%);
+}
+
+@keyframes drift-up {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.9;
+  }
+  90% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: translate3d(var(--drift), -120vh, 0) rotate(var(--rotate));
+    opacity: 0;
+  }
+}

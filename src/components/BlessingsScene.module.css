@@ -1,0 +1,35 @@
+.blessings {
+  background: radial-gradient(ellipse at 50% 35%, #3b154d 0%, #200a29 55%, #150719 100%);
+}
+
+.namam {
+  width: clamp(90px, 16vw, 140px);
+  opacity: 0.95;
+  filter: drop-shadow(0 0 18px rgba(255, 157, 77, 0.35));
+}
+
+.elephant {
+  position: absolute;
+  bottom: -2%;
+  width: clamp(120px, 22vw, 220px);
+  opacity: 0.3;
+  z-index: 1;
+}
+
+.elephantLeft {
+  left: -5%;
+}
+
+.elephantRight {
+  right: -5%;
+}
+
+.diyaRow {
+  display: flex;
+  gap: 1.4rem;
+  margin-top: 0.5rem;
+}
+
+.diyaRow svg {
+  width: clamp(28px, 5vw, 40px);
+}

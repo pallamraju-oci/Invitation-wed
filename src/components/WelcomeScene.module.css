@@ -1,0 +1,61 @@
+.welcome {
+  background: radial-gradient(ellipse at 50% 70%, #4d1e63 0%, #2c0f3a 55%, #150719 100%);
+  padding-top: calc(var(--safe-top) + 1.5rem);
+}
+
+.courtyard {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.glow {
+  position: absolute;
+  left: 50%;
+  top: 38%;
+  width: 70vw;
+  height: 70vw;
+  max-width: 700px;
+  max-height: 700px;
+  transform: translate(-50%, -50%);
+  background: var(--grad-candle-glow);
+  opacity: 0;
+  z-index: 2;
+}
+
+.pathway {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  height: 55%;
+  clip-path: polygon(38% 0%, 62% 0%, 100% 100%, 0% 100%);
+  background: linear-gradient(180deg, rgba(230, 205, 125, 0.05) 0%, rgba(230, 205, 125, 0.28) 100%);
+  z-index: 2;
+}
+
+.diya {
+  position: absolute;
+  width: clamp(30px, 5vw, 46px);
+  opacity: 0;
+  z-index: 6;
+}
+
+.peacock {
+  position: absolute;
+  right: -4%;
+  bottom: 4%;
+  width: clamp(140px, 26vw, 260px);
+  opacity: 0;
+  z-index: 5;
+}
+
+.textBlock {
+  position: relative;
+  z-index: 30;
+}
+
+.line {
+  display: block;
+}

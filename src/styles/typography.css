@@ -1,0 +1,70 @@
+.eyebrow {
+  font-family: var(--font-display);
+  font-size: var(--fs-eyebrow);
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--gold-300);
+  font-weight: 500;
+}
+
+.telugu-line {
+  font-family: var(--font-telugu);
+  font-size: var(--fs-telugu);
+  color: var(--gold-200);
+  letter-spacing: 0.02em;
+  font-weight: 500;
+}
+
+.display-names {
+  font-family: var(--font-display);
+  font-size: var(--fs-name);
+  line-height: 1.05;
+  color: var(--cream-100);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.heading-1 {
+  font-family: var(--font-display);
+  font-size: var(--fs-h1);
+  color: var(--cream-100);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.heading-2 {
+  font-family: var(--font-display-deco);
+  font-size: var(--fs-h2);
+  color: var(--gold-300);
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+.body-copy {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  color: var(--cream-200);
+  line-height: 1.65;
+  font-weight: 400;
+}
+
+.script-line {
+  font-family: var(--font-script);
+  font-size: clamp(1.8rem, 7vw, 3rem);
+  color: var(--gold-300);
+  font-weight: 700;
+}
+
+.small-caps {
+  font-family: var(--font-display);
+  font-size: var(--fs-small);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold-400);
+}
+
+.heart {
+  color: var(--ruby-500);
+  display: inline-block;
+}

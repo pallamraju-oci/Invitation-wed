@@ -1,0 +1,46 @@
+.flameGroup {
+  transform-origin: 50px 54px;
+  animation: flicker 2.4s ease-in-out infinite;
+}
+
+.flameOuter {
+  filter: drop-shadow(0 0 6px rgba(255, 157, 77, 0.85));
+}
+
+.flameInner {
+  animation: flickerInner 1.8s ease-in-out infinite;
+  transform-origin: 50px 50px;
+}
+
+@keyframes flicker {
+  0%,
+  100% {
+    transform: scaleY(1) rotate(0deg);
+  }
+  25% {
+    transform: scaleY(1.05) rotate(-1.5deg);
+  }
+  50% {
+    transform: scaleY(0.95) rotate(1deg);
+  }
+  75% {
+    transform: scaleY(1.02) rotate(-0.5deg);
+  }
+}
+
+@keyframes flickerInner {
+  0%,
+  100% {
+    opacity: 0.9;
+  }
+  50% {
+    opacity: 0.65;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flameGroup,
+  .flameInner {
+    animation: none;
+  }
+}

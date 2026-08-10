@@ -1,0 +1,71 @@
+:root {
+  /* Royal purple */
+  --purple-950: #150719;
+  --purple-900: #200a29;
+  --purple-800: #2c0f3a;
+  --purple-700: #3b154d;
+  --purple-600: #4d1e63;
+  --purple-500: #632a7d;
+
+  /* Antique gold */
+  --gold-100: #faf1d6;
+  --gold-200: #f1e0a8;
+  --gold-300: #e6cd7d;
+  --gold-400: #dcb95a;
+  --gold-500: #cda037;
+  --gold-600: #ad812a;
+  --gold-700: #8a641f;
+  --gold-900: #4a3410;
+
+  /* Burgundy accent */
+  --burgundy-600: #6b1624;
+  --burgundy-500: #85202f;
+  --burgundy-400: #a12c3d;
+
+  /* Warm candlelight / ruby */
+  --candle-500: #ff9d4d;
+  --candle-400: #ffb872;
+  --ruby-500: #c81e3d;
+  --ruby-400: #e23b57;
+
+  /* Neutrals */
+  --cream-100: #fbf5e6;
+  --cream-200: #f4e9cf;
+  --ink-900: #0d0510;
+
+  /* Gradients */
+  --grad-royal: linear-gradient(180deg, var(--purple-950) 0%, var(--purple-800) 55%, var(--purple-700) 100%);
+  --grad-gold-foil: linear-gradient(135deg, var(--gold-200) 0%, var(--gold-500) 45%, var(--gold-700) 75%, var(--gold-300) 100%);
+  --grad-candle-glow: radial-gradient(circle, rgba(255, 184, 114, 0.55) 0%, rgba(255, 157, 77, 0) 70%);
+  --grad-vignette: radial-gradient(ellipse at 50% 40%, rgba(0, 0, 0, 0) 40%, rgba(8, 2, 12, 0.65) 100%);
+
+  /* Type scale */
+  --font-display: "Cinzel", "Cormorant Garamond", serif;
+  --font-display-deco: "Cinzel Decorative", "Cinzel", serif;
+  --font-body: "Cormorant Garamond", serif;
+  --font-script: "Tangerine", cursive;
+  --font-telugu: "Noto Serif Telugu", serif;
+
+  --fs-telugu: clamp(1.1rem, 4vw, 1.6rem);
+  --fs-eyebrow: clamp(0.72rem, 2.4vw, 0.95rem);
+  --fs-name: clamp(2.6rem, 12vw, 6.4rem);
+  --fs-h1: clamp(2.1rem, 8vw, 4.2rem);
+  --fs-h2: clamp(1.5rem, 5.5vw, 2.6rem);
+  --fs-body: clamp(1.05rem, 3.6vw, 1.35rem);
+  --fs-small: clamp(0.85rem, 2.6vw, 1rem);
+
+  /* Motion */
+  --ease-royal: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Layout */
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --content-max: 46rem;
+
+  --z-bg: 1;
+  --z-mid: 10;
+  --z-fg: 20;
+  --z-text: 30;
+  --z-chrome: 100;
+}

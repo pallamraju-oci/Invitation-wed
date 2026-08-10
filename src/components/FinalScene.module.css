@@ -1,0 +1,52 @@
+.final {
+  background: radial-gradient(ellipse at 50% 40%, #3b154d 0%, #200a29 60%, #150719 100%);
+}
+
+.diyaField {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 2%;
+  padding: 4% 4% 14%;
+  align-items: end;
+  opacity: 0.5;
+}
+
+.diyaField svg {
+  width: 100%;
+  max-width: 34px;
+}
+
+.lotusRow {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 3vw;
+  z-index: 2;
+  opacity: 0.8;
+}
+
+.lotusRow svg {
+  width: clamp(40px, 8vw, 70px);
+}
+
+.signature {
+  font-family: var(--font-script);
+  font-size: clamp(1.8rem, 7vw, 2.8rem);
+  color: var(--gold-300);
+  margin-top: 0.5rem;
+}
+
+.finalFade {
+  position: absolute;
+  inset: 0;
+  background: var(--purple-950);
+  opacity: 0;
+  z-index: 50;
+  pointer-events: none;
+}

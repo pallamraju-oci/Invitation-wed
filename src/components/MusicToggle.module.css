@@ -1,0 +1,35 @@
+.button {
+  position: fixed;
+  left: clamp(12px, 3vw, 22px);
+  bottom: calc(var(--safe-bottom) + clamp(12px, 3vw, 22px));
+  z-index: var(--z-chrome);
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid rgba(230, 205, 125, 0.45);
+  background: rgba(21, 7, 25, 0.65);
+  backdrop-filter: blur(6px);
+  color: var(--gold-300);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: box-shadow 0.3s var(--ease-soft), transform 0.3s var(--ease-soft);
+}
+
+.button:hover {
+  box-shadow: 0 0 14px 2px rgba(220, 185, 90, 0.35);
+}
+
+.playing {
+  animation: pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(220, 185, 90, 0.35);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(220, 185, 90, 0);
+  }
+}

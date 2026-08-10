@@ -1,0 +1,87 @@
+.hero {
+  background: radial-gradient(ellipse at 50% 30%, #3b154d 0%, #200a29 55%, #150719 100%);
+}
+
+.archLeft,
+.archRight {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: clamp(60px, 16vw, 160px);
+  opacity: 0.85;
+}
+
+.archLeft {
+  left: 0;
+}
+
+.archRight {
+  right: 0;
+  transform: scaleX(-1);
+}
+
+.garland {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: clamp(40px, 8vw, 70px);
+  opacity: 0.9;
+}
+
+.elephant {
+  position: absolute;
+  bottom: calc(var(--safe-bottom) + 0px);
+  width: clamp(150px, 34vw, 300px);
+  height: auto;
+  opacity: 0.96;
+  filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.5));
+}
+
+.elephantLeft {
+  left: 0.5%;
+}
+
+.elephantRight {
+  right: 0.5%;
+}
+
+@media (max-width: 480px) {
+  .elephant {
+    width: 52vw;
+  }
+  .elephantLeft {
+    left: -10%;
+  }
+  .elephantRight {
+    right: -10%;
+  }
+}
+
+.scrollHint {
+  position: absolute;
+  bottom: calc(var(--safe-bottom) + 1.4rem);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: var(--z-text);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold-300);
+  animation: bob 2.6s ease-in-out infinite;
+}
+
+@keyframes bob {
+  0%,
+  100% {
+    transform: translate(-50%, 0);
+  }
+  50% {
+    transform: translate(-50%, 8px);
+  }
+}

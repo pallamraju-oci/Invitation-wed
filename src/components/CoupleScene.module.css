@@ -1,0 +1,50 @@
+.couple {
+  background: linear-gradient(180deg, #200a29 0%, #150719 100%);
+}
+
+.mandala {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(120vw, 900px);
+  height: min(120vw, 900px);
+  transform: translate(-50%, -50%);
+  opacity: 0.22;
+  z-index: 1;
+}
+
+.peacock {
+  position: absolute;
+  bottom: -2%;
+  width: clamp(120px, 24vw, 240px);
+  opacity: 0.92;
+  z-index: 4;
+}
+
+.peacockLeft {
+  left: -4%;
+}
+
+.peacockRight {
+  right: -4%;
+}
+
+.lotusRow {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 2vw;
+  z-index: 3;
+  opacity: 0.85;
+}
+
+.lotusRow svg {
+  width: clamp(46px, 9vw, 86px);
+}
+
+.names {
+  transform-origin: center;
+}

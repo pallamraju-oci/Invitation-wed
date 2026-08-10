@@ -1,0 +1,37 @@
+.thankYou {
+  background: linear-gradient(180deg, #150719 0%, #200a29 60%, #150719 100%);
+}
+
+.water {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 30%;
+  background: linear-gradient(180deg, rgba(99, 42, 125, 0.35), rgba(21, 7, 25, 0.85));
+  z-index: 1;
+}
+
+.waterLotusRow {
+  position: absolute;
+  bottom: 4%;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 8vw;
+  opacity: 0.75;
+  z-index: 2;
+}
+
+.waterLotusRow svg {
+  width: clamp(40px, 8vw, 70px);
+  filter: blur(0.4px);
+}
+
+.signature {
+  margin-top: 0.75rem;
+  font-family: var(--font-script);
+  font-size: clamp(1.6rem, 6vw, 2.4rem);
+  color: var(--gold-300);
+}
