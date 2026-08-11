@@ -5,6 +5,13 @@ import { Garland, Diya, ParticleField } from "./decor";
 import { weddingData } from "../data/weddingData";
 import styles from "./HaldiScene.module.css";
 
+const haldiVibes = [
+  { title: "Turmeric Blessings", icon: "🌼" },
+  { title: "Folk Music & Dance", icon: "🎶" },
+  { title: "Family Traditions", icon: "🪔" },
+  { title: "Golden Beginnings", icon: "✨" },
+];
+
 function BananaLeaf({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 200 300" className={className} role="presentation" aria-hidden="true">
@@ -41,6 +48,7 @@ export function HaldiScene() {
       fadeIn(".haldi-eyebrow", el);
       slideIn(".haldi-title", el, "up", 40);
       fadeIn(".haldi-details", el, { delay: 0.15 });
+      fadeIn(".haldi-vibe-card", el, { delay: 0.1, stagger: 0.15 });
       parallax(".haldi-leaf-left", el, -8);
       parallax(".haldi-leaf-right", el, -8);
       parallax(".haldi-vessel", el, -4);
@@ -70,6 +78,18 @@ export function HaldiScene() {
         <div className={`${styles.venueTag} haldi-details`}>
           {weddingData.haldi.venueName}{" "}
           {weddingData.haldi.venueNote && <span className={styles.venueNote}>{weddingData.haldi.venueNote}</span>}
+        </div>
+
+        <div className={styles.vibeGrid}>
+          {haldiVibes.map((vibe) => (
+            <div key={vibe.title} className={`royal-card ${styles.vibeCard} haldi-vibe-card`}>
+              <span className={styles.vibeIcon} aria-hidden="true">
+                {vibe.icon}
+              </span>
+              <p className={styles.vibeTitle}>{vibe.title}</p>
+              <p className={styles.vibeDate}>{weddingData.haldi.date}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>

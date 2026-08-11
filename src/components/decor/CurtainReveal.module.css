@@ -1,0 +1,41 @@
+.curtain {
+  position: absolute;
+  inset: 0;
+  z-index: 40;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      #5a1a2e 0%,
+      #7a2540 4%,
+      #5a1a2e 8%
+    ),
+    linear-gradient(180deg, #4d1e63 0%, #6b1624 55%, #3b154d 100%);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+  will-change: transform;
+}
+
+.rod {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: clamp(10px, 1.6vw, 18px);
+  background: linear-gradient(180deg, var(--gold-200), var(--gold-600));
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.fringe {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: clamp(14px, 2.4vw, 24px);
+  background: repeating-linear-gradient(
+    90deg,
+    var(--gold-400) 0%,
+    var(--gold-400) 2%,
+    transparent 2%,
+    transparent 4%
+  );
+  opacity: 0.9;
+}

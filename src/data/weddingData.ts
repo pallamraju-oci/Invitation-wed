@@ -18,6 +18,7 @@ export interface WeddingData {
   invocation: string;
   tagline: string;
   welcomeMessage: string;
+  quotes: string[];
   journey: {
     heading: string;
     lines: string[];
@@ -52,6 +53,11 @@ export const weddingData: WeddingData = {
   tagline: "A love story written in destiny",
   welcomeMessage:
     "Together with their families, we joyfully invite you to celebrate the wedding of two hearts, two families, and a beautiful journey of a lifetime.",
+  quotes: [
+    "Two souls with but a single thought, two hearts that beat as one.",
+    "A successful marriage requires falling in love many times, always with the same person.",
+    "Where there is love, there is life.",
+  ],
   journey: {
     heading: "Our Journey",
     lines: ["From strangers to friends", "From friends to love", "From love to forever"],

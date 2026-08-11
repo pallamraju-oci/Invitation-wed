@@ -1,6 +1,6 @@
 import { useLayoutEffect, useRef } from "react";
 import { gsap } from "../animations/gsapSetup";
-import { createPinnedTimeline } from "../animations/transitions";
+import { revealText } from "../animations/scrollAnimations";
 import { ParticleField } from "./decor";
 import { SceneBackgroundImage } from "./SceneBackgroundImage";
 import { weddingData } from "../data/weddingData";
@@ -11,16 +11,18 @@ export function WeddingCeremonyScene() {
 
   useLayoutEffect(() => {
     if (!sectionRef.current) return;
+    const el = sectionRef.current;
     const ctx = gsap.context(() => {
-      const tl = createPinnedTimeline(sectionRef.current as Element, { endDistance: 2000 });
-
-      tl.fromTo(".ceremony-bg", { opacity: 0.3 }, { opacity: 1, duration: 0.8 }, 0);
-      tl.fromTo(
-        ".ceremony-line",
-        { opacity: 0, y: 24, filter: "blur(5px)" },
-        { opacity: 1, y: 0, filter: "blur(0px)", stagger: 0.22, duration: 0.6 },
-        0.35
+      gsap.fromTo(
+        ".ceremony-bg",
+        { opacity: 0.3 },
+        {
+          opacity: 1,
+          duration: 1,
+          scrollTrigger: { trigger: el, start: "top 70%", toggleActions: "play none none reverse" },
+        }
       );
+      revealText(".ceremony-line", el);
     }, sectionRef);
 
     return () => ctx.revert();
@@ -42,6 +44,7 @@ export function WeddingCeremonyScene() {
         </h2>
         <p className="small-caps ceremony-line">{weddingData.weddingDate.toUpperCase()}</p>
         <p className={`${styles.time} ceremony-line`}>{weddingData.weddingTime}</p>
+        <p className={`${styles.venue} ceremony-line`}>{weddingData.wedding.venue}</p>
       </div>
     </section>
   );

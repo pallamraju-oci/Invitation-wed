@@ -14,6 +14,7 @@ import { FinalScene } from "./components/FinalScene";
 import { ProgressNav } from "./components/ProgressNav";
 import { MusicToggle } from "./components/MusicToggle";
 import { FilmGrain } from "./components/FilmGrain";
+import { GoldSparkleField } from "./components/decor";
 
 function App() {
   return (
@@ -23,17 +24,18 @@ function App() {
         <WelcomeScene />
         <CoupleScene />
         <JourneyScene />
-        <SaveTheDateScene />
         <HaldiScene />
         <ElephantProcessionScene />
         <WeddingCeremonyScene />
         <VenueScene />
         <BlessingsScene />
+        <SaveTheDateScene />
         <ThankYouScene />
         <FinalScene />
       </main>
       <ProgressNav />
       <MusicToggle />
+      <GoldSparkleField />
       <FilmGrain />
     </LenisProvider>
   );

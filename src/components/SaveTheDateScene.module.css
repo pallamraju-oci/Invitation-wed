@@ -4,10 +4,12 @@
 
 .card {
   position: relative;
-  padding: clamp(1rem, 4vw, 1.6rem) clamp(1.2rem, 6vw, 2.4rem);
+  width: min(90vw, 22rem);
+  padding: clamp(1.4rem, 5vw, 2.2rem) clamp(1.2rem, 6vw, 2.4rem);
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
   gap: 0.6rem;
 }
 
@@ -31,6 +33,13 @@
   font-size: clamp(1.2rem, 4vw, 1.6rem);
   color: var(--gold-200);
   letter-spacing: 0.15em;
+}
+
+.time {
+  font-family: var(--font-display-deco);
+  font-size: clamp(1.4rem, 5vw, 2rem);
+  color: var(--gold-300);
+  letter-spacing: 0.1em;
 }
 
 .weekday {

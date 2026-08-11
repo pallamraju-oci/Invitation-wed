@@ -32,10 +32,12 @@ export function ThankYouScene() {
 
       <div className="scene__content">
         <p className="heading-2 ty-eyebrow">Thank You</p>
-        <p className="body-copy ty-message">{weddingData.thankYouMessage}</p>
-        <p className={`${styles.signature} ty-signature`}>
-          With Love, {weddingData.groom} &amp; {weddingData.bride}
-        </p>
+        <div className={`royal-card ${styles.card}`}>
+          <p className="body-copy ty-message">{weddingData.thankYouMessage}</p>
+          <p className={`${styles.signature} ty-signature`}>
+            With Love, {weddingData.groom} &amp; {weddingData.bride}
+          </p>
+        </div>
       </div>
     </section>
   );

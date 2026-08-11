@@ -5,7 +5,7 @@ import styles from "./MusicToggle.module.css";
 /**
  * Optional background music control. Never autoplays — playback only starts
  * from an explicit tap, satisfying browser autoplay policies. Drop the actual
- * track at public/audio/wedding-instrumental.mp3; if it's missing, playback
+ * track at public/audio/venkateswara-namam.mp3; if it's missing, playback
  * fails silently and the button simply stays paused.
  */
 export function MusicToggle() {
@@ -25,13 +25,13 @@ export function MusicToggle() {
 
   return (
     <>
-      <audio ref={audioRef} src="/audio/wedding-instrumental.mp3" loop preload="none" />
+      <audio ref={audioRef} src="/audio/venkateswara-namam.mp3" loop preload="none" />
       <button
         type="button"
         className={`${styles.button} ${playing ? styles.playing : ""}`}
         onClick={toggle}
         aria-pressed={playing}
-        aria-label={playing ? "Pause background music" : "Play background music"}
+        aria-label={playing ? "Pause Venkateswara Namam" : "Play Venkateswara Namam"}
       >
         {playing ? <Music size={18} strokeWidth={1.6} /> : <VolumeX size={18} strokeWidth={1.6} />}
       </button>

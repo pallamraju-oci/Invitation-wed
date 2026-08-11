@@ -1,7 +1,6 @@
 import { useLayoutEffect, useRef } from "react";
-import { gsap } from "../animations/gsapSetup";
-import { createPinnedTimeline } from "../animations/transitions";
-import { TempleDoors, ParticleField } from "./decor";
+import { gsap, prefersReducedMotion } from "../animations/gsapSetup";
+import { CurtainReveal, ParticleField } from "./decor";
 import { SceneBackgroundImage } from "./SceneBackgroundImage";
 import { weddingData } from "../data/weddingData";
 import styles from "./WelcomeScene.module.css";
@@ -11,18 +10,26 @@ export function WelcomeScene() {
 
   useLayoutEffect(() => {
     if (!sectionRef.current) return;
+    const el = sectionRef.current;
+    const reduced = prefersReducedMotion();
     const ctx = gsap.context(() => {
-      const tl = createPinnedTimeline(sectionRef.current as Element, { endDistance: 2400 });
+      const tl = gsap.timeline({
+        scrollTrigger: { trigger: el, start: "top 70%", toggleActions: "play none none reverse" },
+      });
 
-      tl.to('[data-door="left"]', { xPercent: -100, ease: "power3.inOut", duration: 1 }, 0);
-      tl.to('[data-door="right"]', { xPercent: 100, ease: "power3.inOut", duration: 1 }, 0.04);
-      tl.to(".welcome-petals", { opacity: 1, duration: 0.4 }, 0.3);
-      tl.fromTo(
-        ".welcome-line",
-        { opacity: 0, y: 26, filter: "blur(5px)" },
-        { opacity: 1, y: 0, filter: "blur(0px)", stagger: 0.35, duration: 0.7 },
-        0.55
-      );
+      tl.to("[data-curtain]", { yPercent: -100, duration: reduced ? 0.01 : 1.1, ease: "power3.inOut" })
+        .fromTo(
+          ".welcome-line",
+          { opacity: 0, y: reduced ? 0 : 20, filter: reduced ? "none" : "blur(4px)" },
+          { opacity: 1, y: 0, filter: "blur(0px)", stagger: 0.12, duration: 0.5 },
+          "-=0.5"
+        )
+        .fromTo(
+          ".welcome-quote",
+          { opacity: 0, y: reduced ? 0 : 14 },
+          { opacity: 1, y: 0, stagger: 0.15, duration: 0.6 },
+          "-=0.1"
+        );
     }, sectionRef);
 
     return () => ctx.revert();
@@ -34,9 +41,7 @@ export function WelcomeScene() {
         name="welcome-palace"
         alt="An open golden temple gateway revealing a diya-lit palace courtyard path flanked by peacocks"
       />
-      <div className="welcome-petals" style={{ opacity: 0, position: "absolute", inset: 0, zIndex: 3 }}>
-        <ParticleField variant="petal" count={10} />
-      </div>
+      <ParticleField variant="petal" count={10} />
 
       <div className={`scene__content ${styles.textBlock}`}>
         <p className="eyebrow">Welcome</p>
@@ -46,9 +51,17 @@ export function WelcomeScene() {
           <span className={`${styles.line} welcome-line`}>the wedding of two hearts, two families,</span>
           <span className={`${styles.line} welcome-line`}>and a beautiful journey of a lifetime.</span>
         </p>
+
+        <div className={styles.quotes}>
+          {weddingData.quotes.map((quote) => (
+            <p key={quote} className={`script-line ${styles.quote} welcome-quote`}>
+              &ldquo;{quote}&rdquo;
+            </p>
+          ))}
+        </div>
       </div>
 
-      <TempleDoors />
+      <CurtainReveal />
       <div className="visually-hidden">{weddingData.welcomeMessage}</div>
     </section>
   );

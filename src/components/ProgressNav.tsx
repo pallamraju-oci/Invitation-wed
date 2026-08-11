@@ -13,12 +13,12 @@ const scenes: SceneStop[] = [
   { id: "welcome", label: "Welcome" },
   { id: "couple", label: "Charan & Jyothi" },
   { id: "journey", label: "Our Journey" },
-  { id: "save-the-date", label: "Save the Date" },
   { id: "haldi", label: "Haldi Ceremony" },
   { id: "procession", label: "Elephant Procession" },
   { id: "ceremony", label: "Wedding Ceremony" },
   { id: "venue", label: "Venue" },
   { id: "blessings", label: "Blessings" },
+  { id: "save-the-date", label: "Save the Date" },
   { id: "thank-you", label: "Thank You" },
   { id: "final", label: "Together Forever" },
 ];

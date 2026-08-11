@@ -32,10 +32,11 @@ export function SaveTheDateScene() {
       <div className="scene__content">
         <p className="heading-2 std-eyebrow">Save the Date</p>
 
-        <div className={`${styles.card} std-card`}>
+        <div className={`royal-card ${styles.card} std-card`}>
           <span className={styles.day}>{day}</span>
           <span className={styles.month}>{month.toUpperCase()}</span>
           <span className={styles.year}>{year}</span>
+          <span className={styles.time}>{weddingData.weddingTime}</span>
           <span className={styles.weekday}>{weddingData.weddingDay}</span>
         </div>
       </div>
