@@ -23,6 +23,31 @@ export function CoupleScene() {
           ease: "none",
           scrollTrigger: { trigger: el, start: "top bottom", end: "bottom top", scrub: 1 },
         });
+
+        // Etch the mandala rings in as if being hand-drawn, staggered inner-then-outer.
+        // fromTo (not to) so the "hidden" dashoffset only ever exists once this tween
+        // has actually taken over — the SVG's own default is fully-drawn.
+        gsap.fromTo(
+          '.couple-mandala [data-mandala-ring="inner"]',
+          { strokeDashoffset: (_i, target) => Number(target.getAttribute("stroke-dasharray")) },
+          {
+            strokeDashoffset: 0,
+            duration: 2.2,
+            ease: "power2.inOut",
+            scrollTrigger: { trigger: el, start: "top 70%", toggleActions: "play none none reverse" },
+          }
+        );
+        gsap.fromTo(
+          '.couple-mandala [data-mandala-ring="outer"]',
+          { strokeDashoffset: (_i, target) => Number(target.getAttribute("stroke-dasharray")) },
+          {
+            strokeDashoffset: 0,
+            duration: 2.6,
+            delay: 0.3,
+            ease: "power2.inOut",
+            scrollTrigger: { trigger: el, start: "top 70%", toggleActions: "play none none reverse" },
+          }
+        );
       }
 
       parallax(".couple-peacock-left", el, -10);
@@ -51,7 +76,7 @@ export function CoupleScene() {
 
       <div className="scene__content">
         <p className="eyebrow couple-eyebrow">The Union</p>
-        <h2 className={`display-names ${styles.names} couple-names`}>
+        <h2 className={`display-names gold-shimmer-text ${styles.names} couple-names`}>
           {weddingData.groom.toUpperCase()}
           <br />
           <span className="heart" aria-hidden="true">

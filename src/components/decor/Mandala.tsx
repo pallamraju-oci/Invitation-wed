@@ -5,16 +5,41 @@ interface MandalaProps {
   style?: React.CSSProperties;
 }
 
+const RING_OUTER_CIRCUMFERENCE = 2 * Math.PI * 280;
+const RING_INNER_CIRCUMFERENCE = 2 * Math.PI * 240;
+
 export function Mandala({ className, style }: MandalaProps) {
-  const { goldUrl, lineUrl, defs } = useGoldGradient("mandala");
+  const { goldUrl, lineUrl, jewelUrl, glowUrl, defs } = useGoldGradient("mandala");
   const petalCounts = [24, 16, 12];
 
   return (
     <svg viewBox="0 0 600 600" className={className} style={style} role="presentation" aria-hidden="true" focusable="false">
       {defs}
       <g transform="translate(300 300)">
-        <circle r="280" fill="none" stroke={lineUrl} strokeWidth="1" opacity="0.5" />
-        <circle r="240" fill="none" stroke={lineUrl} strokeWidth="1.5" opacity="0.6" />
+        {/* strokeDashoffset defaults to 0 (fully drawn) so reduced-motion users, who skip
+            the JS draw-in tween entirely, still see complete rings rather than nothing. */}
+        <circle
+          r="280"
+          fill="none"
+          stroke={lineUrl}
+          strokeWidth="1.4"
+          opacity="0.6"
+          filter={glowUrl}
+          data-mandala-ring="outer"
+          strokeDasharray={RING_OUTER_CIRCUMFERENCE}
+          strokeDashoffset={0}
+        />
+        <circle
+          r="240"
+          fill="none"
+          stroke={lineUrl}
+          strokeWidth="1.8"
+          opacity="0.7"
+          filter={glowUrl}
+          data-mandala-ring="inner"
+          strokeDasharray={RING_INNER_CIRCUMFERENCE}
+          strokeDashoffset={0}
+        />
 
         {petalCounts.map((count, ringIndex) => {
           const ringRadius = 180 - ringIndex * 50;
@@ -38,7 +63,7 @@ export function Mandala({ className, style }: MandalaProps) {
         })}
 
         <circle r="46" fill="none" stroke={lineUrl} strokeWidth="2" />
-        <circle r="30" fill="none" stroke={lineUrl} strokeWidth="1" opacity="0.7" />
+        <circle r="30" fill={jewelUrl} stroke={lineUrl} strokeWidth="1" opacity="0.95" />
       </g>
     </svg>
   );

@@ -1,6 +1,6 @@
 import { useLayoutEffect, useRef } from "react";
 import { ChevronDown } from "lucide-react";
-import { gsap } from "../animations/gsapSetup";
+import { gsap, prefersReducedMotion } from "../animations/gsapSetup";
 import { fadeOut, parallax } from "../animations/scrollAnimations";
 import { Elephant, TempleArch, ParticleField, Garland } from "./decor";
 import { weddingData } from "../data/weddingData";
@@ -22,6 +22,14 @@ export function WeddingHero() {
         .fromTo(".hero-date", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.9 }, "-=0.4")
         .fromTo(".hero-tagline", { opacity: 0 }, { opacity: 1, duration: 1.1 }, "-=0.4")
         .fromTo(".hero-scroll-hint", { opacity: 0 }, { opacity: 1, duration: 0.8 }, "-=0.3");
+
+      if (!prefersReducedMotion()) {
+        gsap.fromTo(
+          "[data-arch-crown]",
+          { strokeDashoffset: (_i, target) => Number(target.getAttribute("stroke-dasharray")) },
+          { strokeDashoffset: 0, duration: 2, delay: 0.2, ease: "power2.inOut", stagger: 0.2 }
+        );
+      }
 
       if (sectionRef.current) {
         parallax(".hero-elephant-left", sectionRef.current, -8);
@@ -49,11 +57,11 @@ export function WeddingHero() {
         <p className="telugu-line hero-invocation">{weddingData.invocation}</p>
         <div className="scene__divider" />
         <h1 className="display-names">
-          <span className="hero-name">{weddingData.groom}</span>{" "}
+          <span className="hero-name gold-shimmer-text">{weddingData.groom}</span>{" "}
           <span className="heart hero-name" aria-hidden="true">
             ❤
           </span>{" "}
-          <span className="hero-name">{weddingData.bride}</span>
+          <span className="hero-name gold-shimmer-text">{weddingData.bride}</span>
         </h1>
         <p className="small-caps hero-date">{weddingData.weddingDate.toUpperCase()}</p>
         <p className="script-line hero-tagline">{weddingData.tagline}</p>

@@ -7,7 +7,7 @@ interface ElephantProps {
 }
 
 export function Elephant({ className, style, flip = false }: ElephantProps) {
-  const { goldUrl, softUrl, lineUrl, defs } = useGoldGradient("elephant");
+  const { goldUrl, softUrl, lineUrl, jewelUrl, glowUrl, defs } = useGoldGradient("elephant");
 
   return (
     <svg
@@ -56,14 +56,15 @@ export function Elephant({ className, style, flip = false }: ElephantProps) {
           <rect key={i} x={x} y="270" width="26" height="60" rx="10" fill="#5c2277" stroke={lineUrl} strokeWidth="1" />
         ))}
         {/* howdah / ambari canopy */}
-        <g transform="translate(150 60)">
+        <g transform="translate(150 60)" filter={glowUrl}>
           <path d="M0,50 L20,0 L120,0 L140,50 Z" fill={goldUrl} stroke="#4a3410" strokeWidth="1.4" />
           <rect x="10" y="48" width="120" height="14" fill={softUrl} stroke="#4a3410" strokeWidth="1" />
           <path d="M20,0 L70,-26 L120,0 Z" fill={softUrl} stroke="#4a3410" strokeWidth="1" />
-          <circle cx="70" cy="-26" r="5" fill={goldUrl} />
+          <circle cx="70" cy="-26" r="5" fill={jewelUrl} />
         </g>
         {/* headpiece / gold plate */}
         <path d="M60,196 L112,188 L104,220 L64,224 Z" fill={goldUrl} stroke="#4a3410" strokeWidth="1" opacity="0.95" />
+        <circle cx="88" cy="203" r="4.5" fill={jewelUrl} />
         {/* garland */}
         <path d="M100,240 Q150,268 200,240 Q250,268 300,240" fill="none" stroke={softUrl} strokeWidth="10" strokeLinecap="round" opacity="0.9" />
         <path d="M100,240 Q150,268 200,240 Q250,268 300,240" fill="none" stroke="#a12c3d" strokeWidth="3" strokeDasharray="1 9" strokeLinecap="round" />

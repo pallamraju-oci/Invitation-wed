@@ -66,5 +66,46 @@
 
 .heart {
   color: var(--ruby-500);
+  -webkit-text-fill-color: var(--ruby-500);
   display: inline-block;
+}
+
+/* Animated gold-foil sweep across text — a slow shimmer, not a flashy shine. */
+.gold-shimmer-text {
+  background-image: linear-gradient(
+    100deg,
+    var(--gold-200) 0%,
+    var(--cream-100) 18%,
+    var(--gold-300) 32%,
+    var(--gold-500) 45%,
+    var(--gold-200) 60%,
+    var(--cream-100) 75%,
+    var(--gold-300) 100%
+  );
+  background-size: 240% 100%;
+  background-position: 0% 50%;
+  color: var(--cream-100);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gold-shimmer 9s ease-in-out infinite;
+}
+
+@keyframes gold-shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gold-shimmer-text {
+    animation: none;
+    background-position: 30% 50%;
+  }
 }

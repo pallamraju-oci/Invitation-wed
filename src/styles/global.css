@@ -111,6 +111,51 @@ a {
   background: linear-gradient(180deg, transparent, var(--gold-400), transparent);
 }
 
+/*
+ * Every scene gets a soft dark fade at its top/bottom edge. Because adjacent
+ * scenes sit back-to-back in normal flow, this shared "iris" is what's
+ * actually visible on screen during the scroll transition between two scenes
+ * — it unifies otherwise differently-colored scenes into one continuous take
+ * instead of a hard cut, without needing per-scene color matching.
+ */
+.scene::before,
+.scene::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: clamp(70px, 14vh, 190px);
+  z-index: 4;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.scene::before {
+  top: 0;
+  background: linear-gradient(to bottom, var(--purple-950), transparent);
+}
+
+.scene::after {
+  bottom: 0;
+  background: linear-gradient(to top, var(--purple-950), transparent);
+}
+
+/* Fixed cinematic grain, subtle enough to add texture without muddying text. */
+.film-grain {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .film-grain {
+    opacity: 0.03;
+  }
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;

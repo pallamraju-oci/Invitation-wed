@@ -7,7 +7,7 @@ interface PeacockProps {
 }
 
 export function Peacock({ className, style, flip = false }: PeacockProps) {
-  const { goldUrl, softUrl, lineUrl, defs } = useGoldGradient("peacock");
+  const { goldUrl, softUrl, lineUrl, jewelUrl, glowUrl, defs } = useGoldGradient("peacock");
   const feathers = 9;
 
   return (
@@ -34,8 +34,8 @@ export function Peacock({ className, style, flip = false }: PeacockProps) {
                 strokeWidth="0.5"
                 opacity="0.88"
               />
-              <ellipse cx="0" cy={-len + 6} rx="9" ry="12" fill="#3b154d" stroke={lineUrl} strokeWidth="1.4" />
-              <ellipse cx="0" cy={-len + 6} rx="4" ry="5.5" fill={goldUrl} />
+              <ellipse cx="0" cy={-len + 6} rx="9" ry="12" fill="#3b154d" stroke={lineUrl} strokeWidth="1.4" filter={glowUrl} />
+              <ellipse cx="0" cy={-len + 6} rx="4" ry="5.5" fill={jewelUrl} />
             </g>
           );
         })}
@@ -50,6 +50,7 @@ export function Peacock({ className, style, flip = false }: PeacockProps) {
         <circle cx="19" cy="-132" r="1.6" fill="#faf1d6" />
         {/* crest */}
         <path d="M12,-140 l3,-10 M17,-141 l1,-11 M22,-139 l4,-9" stroke={goldUrl} strokeWidth="1.6" strokeLinecap="round" />
+        <circle cx="17" cy="-152" r="2.2" fill={jewelUrl} />
         {/* legs */}
         <path d="M-8,4 L-10,26 M6,4 L8,26" stroke="#4a3410" strokeWidth="2.4" strokeLinecap="round" />
       </g>

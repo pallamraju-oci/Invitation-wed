@@ -13,6 +13,7 @@ import { ThankYouScene } from "./components/ThankYouScene";
 import { FinalScene } from "./components/FinalScene";
 import { ProgressNav } from "./components/ProgressNav";
 import { MusicToggle } from "./components/MusicToggle";
+import { FilmGrain } from "./components/FilmGrain";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
       </main>
       <ProgressNav />
       <MusicToggle />
+      <FilmGrain />
     </LenisProvider>
   );
 }

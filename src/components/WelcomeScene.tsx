@@ -19,10 +19,10 @@ export function WelcomeScene() {
   useLayoutEffect(() => {
     if (!sectionRef.current) return;
     const ctx = gsap.context(() => {
-      const tl = createPinnedTimeline(sectionRef.current as Element, { endDistance: 1700 });
+      const tl = createPinnedTimeline(sectionRef.current as Element, { endDistance: 2400 });
 
-      tl.to('[data-door="left"]', { xPercent: -100, ease: "power2.inOut", duration: 1 }, 0);
-      tl.to('[data-door="right"]', { xPercent: 100, ease: "power2.inOut", duration: 1 }, 0);
+      tl.to('[data-door="left"]', { xPercent: -100, ease: "power3.inOut", duration: 1 }, 0);
+      tl.to('[data-door="right"]', { xPercent: 100, ease: "power3.inOut", duration: 1 }, 0.04);
       tl.to(".welcome-glow", { opacity: 1, duration: 0.6 }, 0.05);
       tl.fromTo(".welcome-diya", { opacity: 0, y: 12 }, { opacity: 1, y: 0, stagger: 0.08, duration: 0.5 }, 0.3);
       tl.to(".welcome-petals", { opacity: 1, duration: 0.4 }, 0.35);

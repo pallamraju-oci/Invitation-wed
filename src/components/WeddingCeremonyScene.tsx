@@ -12,10 +12,10 @@ export function WeddingCeremonyScene() {
   useLayoutEffect(() => {
     if (!sectionRef.current) return;
     const ctx = gsap.context(() => {
-      const tl = createPinnedTimeline(sectionRef.current as Element, { endDistance: 1900 });
+      const tl = createPinnedTimeline(sectionRef.current as Element, { endDistance: 2500 });
 
-      tl.fromTo(".ceremony-pillar-left", { opacity: 0, scaleY: 0.7 }, { opacity: 1, scaleY: 1, duration: 0.6 }, 0);
-      tl.fromTo(".ceremony-pillar-right", { opacity: 0, scaleY: 0.7 }, { opacity: 1, scaleY: 1, duration: 0.6 }, 0.05);
+      tl.fromTo(".ceremony-pillar-left", { opacity: 0, scaleY: 0.7 }, { opacity: 1, scaleY: 1, duration: 0.6, ease: "power3.out" }, 0);
+      tl.fromTo(".ceremony-pillar-right", { opacity: 0, scaleY: 0.7 }, { opacity: 1, scaleY: 1, duration: 0.6, ease: "power3.out" }, 0.05);
       tl.to(".ceremony-drape-left", { opacity: 1, duration: 0.5 }, 0.15);
       tl.to(".ceremony-drape-right", { opacity: 1, duration: 0.5 }, 0.2);
       tl.fromTo(".ceremony-bell", { opacity: 0, rotate: -8 }, { opacity: 1, rotate: 0, stagger: 0.1, duration: 0.5 }, 0.3);
@@ -62,7 +62,7 @@ export function WeddingCeremonyScene() {
 
       <div className="scene__content" style={{ zIndex: 30 }}>
         <p className="eyebrow ceremony-line">Wedding Ceremony</p>
-        <h2 className="display-names ceremony-line" style={{ fontSize: "clamp(2rem, 9vw, 4.4rem)" }}>
+        <h2 className="display-names gold-shimmer-text ceremony-line" style={{ fontSize: "clamp(2rem, 9vw, 4.4rem)" }}>
           {weddingData.groom} <span className="heart" aria-hidden="true">❤</span> {weddingData.bride}
         </h2>
         <p className="small-caps ceremony-line">{weddingData.weddingDate.toUpperCase()}</p>

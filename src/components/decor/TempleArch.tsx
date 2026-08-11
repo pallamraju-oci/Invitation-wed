@@ -6,8 +6,10 @@ interface TempleArchProps {
 }
 
 /** Ornate carved temple arch used as a framing overlay for hero/ceremony scenes. */
+const CROWN_PATH_LENGTH = 500;
+
 export function TempleArch({ className, style }: TempleArchProps) {
-  const { goldUrl, lineUrl, defs } = useGoldGradient("arch");
+  const { goldUrl, lineUrl, glowUrl, defs } = useGoldGradient("arch");
 
   return (
     <svg
@@ -35,12 +37,16 @@ export function TempleArch({ className, style }: TempleArchProps) {
           <circle key={i} cx="17" cy={30 + i * 58} r="6" fill="none" stroke={goldUrl} strokeWidth="1.4" opacity="0.75" />
         ))}
       </g>
-      {/* arch crown */}
+      {/* arch crown — dashoffset defaults to 0 (fully drawn); a scene may animate it in */}
       <path
         d="M0,90 C 40,10 360,10 400,90"
         fill="none"
         stroke={goldUrl}
         strokeWidth="6"
+        filter={glowUrl}
+        data-arch-crown="true"
+        strokeDasharray={CROWN_PATH_LENGTH}
+        strokeDashoffset={0}
       />
       <path
         d="M0,110 C 45,34 355,34 400,110"
