@@ -1,8 +1,9 @@
 import { useLayoutEffect, useRef } from "react";
 import { ChevronDown } from "lucide-react";
-import { gsap, prefersReducedMotion } from "../animations/gsapSetup";
+import { gsap } from "../animations/gsapSetup";
 import { fadeOut, parallax } from "../animations/scrollAnimations";
-import { Elephant, TempleArch, ParticleField, Garland } from "./decor";
+import { ParticleField } from "./decor";
+import { SceneBackgroundImage } from "./SceneBackgroundImage";
 import { weddingData } from "../data/weddingData";
 import styles from "./WeddingHero.module.css";
 
@@ -23,17 +24,8 @@ export function WeddingHero() {
         .fromTo(".hero-tagline", { opacity: 0 }, { opacity: 1, duration: 1.1 }, "-=0.4")
         .fromTo(".hero-scroll-hint", { opacity: 0 }, { opacity: 1, duration: 0.8 }, "-=0.3");
 
-      if (!prefersReducedMotion()) {
-        gsap.fromTo(
-          "[data-arch-crown]",
-          { strokeDashoffset: (_i, target) => Number(target.getAttribute("stroke-dasharray")) },
-          { strokeDashoffset: 0, duration: 2, delay: 0.2, ease: "power2.inOut", stagger: 0.2 }
-        );
-      }
-
       if (sectionRef.current) {
-        parallax(".hero-elephant-left", sectionRef.current, -8);
-        parallax(".hero-elephant-right", sectionRef.current, -12);
+        parallax(".hero-bg", sectionRef.current, 8);
         fadeOut(".hero-content, .hero-scroll-hint", sectionRef.current);
       }
     }, sectionRef);
@@ -43,15 +35,13 @@ export function WeddingHero() {
 
   return (
     <section className={`scene ${styles.hero}`} id="cover" ref={sectionRef}>
-      <TempleArch className={styles.archLeft} />
-      <TempleArch className={styles.archRight} />
-      <Garland className={styles.garland} />
-      <ParticleField variant="petal" count={9} />
-
-      <Elephant className={`${styles.elephant} ${styles.elephantLeft} hero-elephant-left`} />
-      <Elephant flip className={`${styles.elephant} ${styles.elephantRight} hero-elephant-right`} />
-
-      <div className="scene__vignette" />
+      <SceneBackgroundImage
+        name="cover-royal-temple"
+        alt="Two decorated ceremonial elephants flanking a grand golden temple entrance, lit with diyas and lotus flowers"
+        priority
+        className="hero-bg"
+      />
+      <ParticleField variant="petal" count={6} />
 
       <div className="scene__content hero-content">
         <p className="telugu-line hero-invocation">{weddingData.invocation}</p>

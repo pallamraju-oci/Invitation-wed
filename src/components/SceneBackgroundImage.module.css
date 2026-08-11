@@ -1,0 +1,52 @@
+.wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* Slow continuous "Ken Burns" drift so a static photo never feels frozen. */
+.kenBurns {
+  animation: ken-burns 24s ease-in-out infinite alternate;
+  transform-origin: center center;
+  will-change: transform;
+}
+
+@keyframes ken-burns {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.09);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kenBurns {
+    animation: none;
+  }
+}
+
+/* Darkens the top/bottom thirds so overlaid cream/gold text stays legible
+   regardless of how bright that region of the underlying photo is. */
+.scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(13, 5, 16, 0.78) 0%,
+    rgba(13, 5, 16, 0.34) 25%,
+    rgba(13, 5, 16, 0.34) 72%,
+    rgba(13, 5, 16, 0.82) 100%
+  );
+}

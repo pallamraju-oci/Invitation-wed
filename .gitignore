@@ -12,6 +12,10 @@ dist
 dist-ssr
 *.local
 
+# Raw AI-generated source images (uncompressed originals) — optimized
+# webp/jpg derivatives in src/assets/images/scenes/ are what's committed.
+.raw-image-sources/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
