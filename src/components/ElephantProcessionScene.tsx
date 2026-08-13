@@ -31,13 +31,10 @@ export function ElephantProcessionScene() {
         <p className="eyebrow">Procession</p>
         <p className="body-copy">
           <span className="procession-line" style={{ display: "block" }}>
-            A celebration of
+            A celebration of tradition, culture
           </span>
           <span className="procession-line" style={{ display: "block" }}>
-            tradition, culture and
-          </span>
-          <span className="procession-line" style={{ display: "block" }}>
-            timeless blessings.
+            and timeless blessings.
           </span>
         </p>
       </div>

@@ -1,7 +1,8 @@
 import { useLayoutEffect, useRef } from "react";
 import { gsap } from "../animations/gsapSetup";
-import { revealText, scaleIn, parallax } from "../animations/scrollAnimations";
-import { Elephant, VenkateswaraNamam, Diya, ParticleField } from "./decor";
+import { revealText } from "../animations/scrollAnimations";
+import { Diya, ParticleField } from "./decor";
+import { SceneBackgroundImage } from "./SceneBackgroundImage";
 import { weddingData } from "../data/weddingData";
 import styles from "./BlessingsScene.module.css";
 
@@ -12,23 +13,21 @@ export function BlessingsScene() {
     if (!sectionRef.current) return;
     const el = sectionRef.current;
     const ctx = gsap.context(() => {
-      scaleIn(".blessings-namam", el, { duration: 1.2 });
-      revealText(".blessings-line", el, { delay: 0.2 });
-      parallax(".blessings-elephant-left", el, -6);
-      parallax(".blessings-elephant-right", el, -6);
+      revealText(".blessings-line", el);
     }, sectionRef);
     return () => ctx.revert();
   }, []);
 
   return (
     <section className={`scene ${styles.blessings}`} id="blessings" ref={sectionRef}>
-      <Elephant className={`${styles.elephant} ${styles.elephantLeft} blessings-elephant-left`} />
-      <Elephant flip className={`${styles.elephant} ${styles.elephantRight} blessings-elephant-right`} />
+      <SceneBackgroundImage
+        name="venkateswara-blessings"
+        alt="A sacred namam symbol above two ceremonial elephants facing an illuminated temple gopuram"
+      />
       <ParticleField variant="ember" count={7} />
       <div className="scene__vignette" />
 
       <div className="scene__content">
-        <VenkateswaraNamam className={`${styles.namam} blessings-namam`} />
         <p className="body-copy">
           <span className="blessings-line" style={{ display: "block" }}>
             With the divine blessings of

@@ -1,10 +1,56 @@
+/* Every scene heading is a small royal gold medallion, not plain text — the
+   chip carries its own border/background, so it stays legible over any photo
+   and reads as a deliberate emblem rather than a flat label. */
 .eyebrow {
+  display: inline-block;
   font-family: var(--font-display);
   font-size: var(--fs-eyebrow);
-  letter-spacing: 0.42em;
+  letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: var(--gold-300);
-  font-weight: 500;
+  color: var(--purple-950);
+  font-weight: 600;
+  background-image: linear-gradient(
+    100deg,
+    var(--gold-300) 0%,
+    var(--gold-200) 15%,
+    var(--cream-100) 28%,
+    var(--gold-400) 42%,
+    var(--gold-300) 56%,
+    var(--gold-200) 70%,
+    var(--cream-100) 85%,
+    var(--gold-300) 100%
+  );
+  background-size: 250% 100%;
+  background-position: 0% 50%;
+  animation: eyebrow-shimmer 6s ease-in-out infinite;
+  border: 1.5px solid var(--gold-700);
+  outline: 1px solid rgba(230, 205, 125, 0.4);
+  outline-offset: 3px;
+  padding: 0.55em 1.5em;
+  border-radius: 999px;
+  box-shadow:
+    0 6px 18px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.55),
+    inset 0 -2px 3px rgba(74, 52, 16, 0.35);
+}
+
+@keyframes eyebrow-shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .eyebrow {
+    animation: none;
+    background-position: 30% 50%;
+  }
 }
 
 .telugu-line {
@@ -64,10 +110,36 @@
   color: var(--gold-400);
 }
 
+/*
+ * font-size is capped well below 1em (rather than inheriting the huge
+ * display-names size) so the heartbeat's scale(1.18) peak never bleeds into
+ * the line above/below when the heart sits between stacked name lines.
+ */
 .heart {
-  color: var(--ruby-500);
-  -webkit-text-fill-color: var(--ruby-500);
+  font-size: 0.4em;
+  color: var(--gold-400);
+  -webkit-text-fill-color: var(--gold-400);
   display: inline-block;
+  animation: heartbeat 1.8s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes heartbeat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.18);
+  }
+}
+
+/* Shared "when" line for scenes that restate date/time as a secondary mention. */
+.meta-datetime {
+  font-family: var(--font-display-deco);
+  font-size: clamp(1.35rem, 5.2vw, 2.1rem);
+  color: var(--gold-200);
+  letter-spacing: 0.1em;
 }
 
 /* Animated gold-foil sweep across text — a slow shimmer, not a flashy shine. */

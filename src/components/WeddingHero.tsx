@@ -14,13 +14,6 @@ export function WeddingHero() {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ delay: 0.3 });
       tl.fromTo(".hero-namaste-text", { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" })
-        .to(".hero-namaste-text", { opacity: 0, duration: 0.5, ease: "power1.in" }, "+=0.6")
-        .fromTo(
-          ".hero-namaste-icon",
-          { opacity: 0, scale: 0.75 },
-          { opacity: 1, scale: 1, duration: 0.6, ease: "power2.out" },
-          "<"
-        )
         .to(".hero-namaste-wrap", { opacity: 0, duration: 0.6, ease: "power1.in" }, "+=0.6")
         .fromTo(".hero-invocation", { opacity: 0, y: -18 }, { opacity: 1, y: 0, duration: 1, ease: "power2.out" })
         .fromTo(
@@ -54,7 +47,6 @@ export function WeddingHero() {
 
       <div className={`${styles.namasteWrap} hero-namaste-wrap`} aria-hidden="true">
         <span className={`${styles.namasteText} gold-shimmer-text hero-namaste-text`}>Namaste</span>
-        <span className={`${styles.namasteIcon} hero-namaste-icon`}>🙏</span>
       </div>
 
       <div className="scene__content hero-content">
@@ -67,7 +59,7 @@ export function WeddingHero() {
           </span>
           <span className="hero-name gold-shimmer-text">{weddingData.bride}</span>
         </h1>
-        <p className="small-caps hero-date">{weddingData.weddingDate.toUpperCase()}</p>
+        <p className="eyebrow hero-date">Wedding Invitation</p>
         <p className="script-line hero-tagline">{weddingData.tagline}</p>
       </div>
 

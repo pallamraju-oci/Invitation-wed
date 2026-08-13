@@ -1,25 +1,14 @@
 .welcome {
   background: var(--purple-950);
-  padding-top: calc(var(--safe-top) + 1.5rem);
+  align-items: flex-end;
 }
 
 .textBlock {
   position: relative;
   z-index: 30;
+  margin-bottom: clamp(1.5rem, 6vh, 4rem);
 }
 
 .line {
   display: block;
-}
-
-.quotes {
-  margin-top: clamp(1.5rem, 5vw, 2.5rem);
-  display: flex;
-  flex-direction: column;
-  gap: clamp(0.8rem, 3vw, 1.2rem);
-}
-
-.quote {
-  font-size: clamp(1.3rem, 4.5vw, 1.8rem);
-  opacity: 0.92;
 }

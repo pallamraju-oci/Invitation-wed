@@ -10,9 +10,7 @@ import { WeddingCeremonyScene } from "./components/WeddingCeremonyScene";
 import { VenueScene } from "./components/VenueScene";
 import { BlessingsScene } from "./components/BlessingsScene";
 import { ThankYouScene } from "./components/ThankYouScene";
-import { FinalScene } from "./components/FinalScene";
 import { ProgressNav } from "./components/ProgressNav";
-import { MusicToggle } from "./components/MusicToggle";
 import { FilmGrain } from "./components/FilmGrain";
 import { GoldSparkleField } from "./components/decor";
 
@@ -31,10 +29,9 @@ function App() {
         <BlessingsScene />
         <SaveTheDateScene />
         <ThankYouScene />
-        <FinalScene />
+        {/* <FinalScene /> */}
       </main>
       <ProgressNav />
-      <MusicToggle />
       <GoldSparkleField />
       <FilmGrain />
     </LenisProvider>

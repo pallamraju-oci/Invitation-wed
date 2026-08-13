@@ -1,37 +1,12 @@
 .venue {
-  background: linear-gradient(180deg, #200a29 0%, #3b154d 50%, #200a29 100%);
-}
-
-.skyline {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 42%;
-  z-index: 1;
-  opacity: 0.5;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  gap: 2%;
-}
-
-.dome {
-  width: clamp(30px, 7vw, 60px);
-  height: clamp(50px, 14vw, 130px);
-  background: linear-gradient(180deg, var(--gold-400), var(--gold-700));
-  border-radius: 50% 50% 0 0 / 60% 60% 0 0;
+  background: var(--purple-950);
 }
 
 .address {
   max-width: 26rem;
-}
-
-.coords {
-  font-family: var(--font-display);
-  letter-spacing: 0.12em;
-  color: var(--gold-300);
-  font-size: var(--fs-small);
+  font-size: clamp(1.15rem, 4vw, 1.5rem);
+  color: var(--cream-100);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
 }
 
 .qrCard {

@@ -37,14 +37,12 @@ export function WeddingCeremonyScene() {
       />
       <ParticleField variant="ember" count={6} />
 
-      <div className="scene__content" style={{ zIndex: 30, marginTop: "clamp(1rem, 6vh, 4rem)" }}>
-        <p className="eyebrow ceremony-line">Wedding Ceremony</p>
-        <h2 className="display-names gold-shimmer-text ceremony-line" style={{ fontSize: "clamp(2rem, 9vw, 4.4rem)" }}>
-          {weddingData.groom} <span className="heart" aria-hidden="true">❤</span> {weddingData.bride}
-        </h2>
-        <p className="small-caps ceremony-line">{weddingData.weddingDate.toUpperCase()}</p>
-        <p className={`${styles.time} ceremony-line`}>{weddingData.weddingTime}</p>
-        <p className={`${styles.venue} ceremony-line`}>{weddingData.wedding.venue}</p>
+      <div className={`${styles.dateBlock} ceremony-line`}>
+        <p className="eyebrow">Wedding Ceremony</p>
+        <div className={styles.dateTimeGroup}>
+          <p className={`meta-datetime ${styles.dateLine}`}>{weddingData.weddingDate.toUpperCase()}</p>
+          <p className={`meta-datetime ${styles.dateLine}`}>Sumuhurtham &middot; {weddingData.weddingTime}</p>
+        </div>
       </div>
     </section>
   );

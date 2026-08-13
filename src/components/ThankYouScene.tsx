@@ -1,7 +1,8 @@
 import { useLayoutEffect, useRef } from "react";
 import { gsap } from "../animations/gsapSetup";
 import { fadeIn, revealText } from "../animations/scrollAnimations";
-import { Lotus, ParticleField } from "./decor";
+import { ParticleField } from "./decor";
+import { SceneBackgroundImage } from "./SceneBackgroundImage";
 import { weddingData } from "../data/weddingData";
 import styles from "./ThankYouScene.module.css";
 
@@ -21,24 +22,24 @@ export function ThankYouScene() {
 
   return (
     <section className={`scene ${styles.thankYou}`} id="thank-you" ref={sectionRef}>
+      <SceneBackgroundImage
+        name="thank-you-palace"
+        alt="An ornate empty gold temple arch framed in marigold garlands, bells and lotus flowers"
+      />
       <ParticleField variant="gold" count={14} />
-      <div className={styles.water} />
-      <div className={styles.waterLotusRow}>
-        <Lotus variant="bud" />
-        <Lotus />
-        <Lotus variant="bud" />
-      </div>
-      <div className="scene__vignette" />
 
-      <div className="scene__content">
-        <p className="heading-2 ty-eyebrow">Thank You</p>
-        <div className={`royal-card ${styles.card}`}>
-          <p className="body-copy ty-message">{weddingData.thankYouMessage}</p>
-          <p className={`${styles.signature} ty-signature`}>
-            With Love, {weddingData.groom} &amp; {weddingData.bride}
-          </p>
-        </div>
+      <div className={`scene__content ${styles.content}`}>
+        <p className="eyebrow ty-eyebrow">Thank You</p>
+        <p className={`${styles.message} ty-message`}>
+          <span style={{ display: "block" }}>Your presence will make</span>
+          <span style={{ display: "block" }}>our celebration even more</span>
+          <span style={{ display: "block" }}>special and memorable.</span>
+        </p>
+        <p className={`${styles.signature} ty-signature`}>
+          With Love, {weddingData.groom} &amp; {weddingData.bride}
+        </p>
       </div>
+      <div className="visually-hidden">{weddingData.thankYouMessage}</div>
     </section>
   );
 }

@@ -1,43 +1,36 @@
 .thankYou {
-  background: linear-gradient(180deg, #150719 0%, #200a29 60%, #150719 100%);
+  background: var(--purple-950);
 }
 
-.water {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 30%;
-  background: linear-gradient(180deg, rgba(99, 42, 125, 0.35), rgba(21, 7, 25, 0.85));
-  z-index: 1;
+/*
+ * Keeps text within the arch's illustrated frame instead of overflowing it.
+ * Compound selector (not just .content) so this reliably wins over
+ * .scene__content's own width rule regardless of stylesheet order.
+ */
+.thankYou .content {
+  width: 100%;
+  max-width: min(68vw, 19rem);
 }
 
-.waterLotusRow {
-  position: absolute;
-  bottom: 4%;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: center;
-  gap: 8vw;
-  opacity: 0.75;
-  z-index: 2;
-}
-
-.waterLotusRow svg {
-  width: clamp(40px, 8vw, 70px);
-  filter: blur(0.4px);
-}
-
-.card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+/*
+ * This arch photo is a blank cream/parchment panel — the message sits
+ * directly on it in deep ink tones rather than the site's usual light
+ * gold/cream, which would vanish against this light background.
+ */
+.message {
+  width: 100%;
+  text-align: center;
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  color: var(--purple-900);
+  line-height: 1.5;
 }
 
 .signature {
   margin-top: 0.75rem;
   font-family: var(--font-script);
   font-size: clamp(1.6rem, 6vw, 2.4rem);
-  color: var(--gold-300);
+  color: var(--gold-900);
+  font-weight: 700;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
 }

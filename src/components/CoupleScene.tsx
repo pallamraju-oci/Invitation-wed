@@ -13,7 +13,6 @@ export function CoupleScene() {
     if (!sectionRef.current) return;
     const el = sectionRef.current;
     const ctx = gsap.context(() => {
-      fadeIn(".couple-eyebrow", el);
       scaleIn(".couple-names", el, { duration: 1.4 });
       fadeIn(".couple-divider", el, { delay: 0.2 });
       parallax(".couple-bg", el, 6);
@@ -28,13 +27,11 @@ export function CoupleScene() {
         name="couple-peacock"
         alt="An ornate gold mandala frame with two peacocks and pink lotus flowers"
         className="couple-bg"
-        scrim={false}
       />
       <ParticleField variant="gold" count={8} />
       <div className="scene__vignette" />
 
-      <div className="scene__content">
-        <p className="eyebrow couple-eyebrow">The Union</p>
+      <div className={`scene__content ${styles.content}`}>
         <h2 className={`display-names gold-shimmer-text ${styles.names} couple-names`}>
           {weddingData.groom.toUpperCase()}
           <br />

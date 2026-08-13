@@ -4,7 +4,6 @@ export interface EventDetail {
   day: string;
   time?: string;
   venueName: string;
-  venueNote?: string;
 }
 
 export interface WeddingData {
@@ -18,7 +17,6 @@ export interface WeddingData {
   invocation: string;
   tagline: string;
   welcomeMessage: string;
-  quotes: string[];
   journey: {
     heading: string;
     lines: string[];
@@ -31,8 +29,6 @@ export interface WeddingData {
     date: string;
     day: string;
     time: string;
-    latitude: number;
-    longitude: number;
     mapsUrl: string;
   };
   blessing: string;
@@ -53,22 +49,16 @@ export const weddingData: WeddingData = {
   tagline: "A love story written in destiny",
   welcomeMessage:
     "Together with their families, we joyfully invite you to celebrate the wedding of two hearts, two families, and a beautiful journey of a lifetime.",
-  quotes: [
-    "Two souls with but a single thought, two hearts that beat as one.",
-    "A successful marriage requires falling in love many times, always with the same person.",
-    "Where there is love, there is life.",
-  ],
   journey: {
     heading: "Our Journey",
-    lines: ["From strangers to friends", "From friends to love", "From love to forever"],
+    lines: ["From strangers to friends, from friends to love,", "and from love to forever."],
     closing: "Thank you for being a part of our beautiful story.",
   },
   haldi: {
     title: "Haldi Ceremony",
     date: "28 August 2026",
     day: "Friday",
-    venueName: "Ambajipeta",
-    venueNote: "(Home)",
+    venueName: "At Our Residence",
   },
   wedding: {
     venue: "S Convention",
@@ -76,8 +66,6 @@ export const weddingData: WeddingData = {
     date: "30 August 2026",
     day: "Sunday",
     time: "11:27 PM",
-    latitude: 16.5255,
-    longitude: 81.7161,
     mapsUrl: "https://maps.app.goo.gl/RJoB2yetVfwoUqxRA?g_st=ac",
   },
   blessing:

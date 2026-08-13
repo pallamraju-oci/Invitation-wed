@@ -26,19 +26,18 @@ export function SaveTheDateScene() {
         name="save-date"
         alt="An ornate empty gold picture frame with hanging bells and pink lotus flowers"
         className="std-bg"
-        scrim={false}
       />
 
-      <div className="scene__content">
-        <p className="heading-2 std-eyebrow">Save the Date</p>
+      <div className={`scene__content ${styles.content}`}>
+        <p className="eyebrow std-eyebrow">Save the Date</p>
 
-        <div className={`royal-card ${styles.card} std-card`}>
+        <div className={`${styles.dateBlock} std-card`}>
           <span className={styles.day}>{day}</span>
           <span className={styles.month}>{month.toUpperCase()}</span>
           <span className={styles.year}>{year}</span>
-          <span className={styles.time}>{weddingData.weddingTime}</span>
-          <span className={styles.weekday}>{weddingData.weddingDay}</span>
         </div>
+        <span className={styles.weekday}>{weddingData.weddingTime}</span>
+        <p className={styles.time}>{weddingData.weddingDay}</p>
       </div>
     </section>
   );

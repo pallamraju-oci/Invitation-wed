@@ -1,13 +1,3 @@
-export { Lotus } from "./Lotus";
-export { Mandala } from "./Mandala";
-export { Peacock } from "./Peacock";
-export { Elephant } from "./Elephant";
 export { Diya } from "./Diya";
-export { TempleArch } from "./TempleArch";
-export { CurtainReveal } from "./CurtainReveal";
-export { Garland } from "./Garland";
-export { Filigree } from "./Filigree";
-export { VenkateswaraNamam } from "./VenkateswaraNamam";
-export { TempleBell } from "./TempleBell";
 export { ParticleField } from "./ParticleField";
 export { GoldSparkleField } from "./GoldSparkleField";

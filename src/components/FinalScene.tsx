@@ -2,11 +2,10 @@ import { useLayoutEffect, useRef } from "react";
 import { gsap } from "../animations/gsapSetup";
 import { revealText, fadeIn } from "../animations/scrollAnimations";
 import { prefersReducedMotion } from "../animations/gsapSetup";
-import { Diya, Lotus, ParticleField } from "./decor";
+import { ParticleField } from "./decor";
+import { SceneBackgroundImage } from "./SceneBackgroundImage";
 import { weddingData } from "../data/weddingData";
 import styles from "./FinalScene.module.css";
-
-const diyaGrid = Array.from({ length: 16 });
 
 export function FinalScene() {
   const sectionRef = useRef<HTMLElement | null>(null);
@@ -34,24 +33,20 @@ export function FinalScene() {
 
   return (
     <section className={`scene ${styles.final}`} id="final" ref={sectionRef}>
-      <div className={styles.diyaField} aria-hidden="true">
-        {diyaGrid.map((_, i) => (
-          <div key={i} style={{ marginBottom: `${(i % 4) * 8}px` }}>
-            <Diya />
-          </div>
-        ))}
-      </div>
+      <SceneBackgroundImage
+        name="together-forever"
+        alt="A grand palace reflected in a lantern-lit lake beneath a starry night sky, framed by parting curtains"
+      />
       <ParticleField variant="gold" count={16} />
-      <div className={styles.lotusRow}>
-        <Lotus />
-        <Lotus variant="bud" />
-        <Lotus />
-        <Lotus variant="bud" />
-      </div>
-
       <div className="scene__vignette" />
 
-      <div className="scene__content">
+      <div className="scene__content" style={{ marginTop: "clamp(1rem, 6vh, 3rem)" }}>
+        <h2 className="display-names final-signature" style={{ fontSize: "clamp(2rem, 8vw, 3.6rem)" }}>
+          {weddingData.groom} <span className="heart" aria-hidden="true">❤</span> {weddingData.bride}
+        </h2>
+      </div>
+
+      <div className={styles.bottomBlock}>
         <p className="body-copy">
           <span className="final-message-line" style={{ display: "block" }}>
             With the blessings of our families,
@@ -66,10 +61,6 @@ export function FinalScene() {
             and make the occasion truly memorable.
           </span>
         </p>
-
-        <h2 className="display-names final-signature" style={{ fontSize: "clamp(2rem, 8vw, 3.6rem)" }}>
-          {weddingData.groom} <span className="heart" aria-hidden="true">❤</span> {weddingData.bride}
-        </h2>
         <p className={`${styles.signature} final-together`}>{weddingData.signature}</p>
       </div>
 
