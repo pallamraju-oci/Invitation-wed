@@ -16,10 +16,19 @@
   filter: brightness(1.1) contrast(1.08) saturate(1.12);
 }
 
-/* Slow continuous "Ken Burns" drift so a static photo never feels frozen. */
+/*
+ * Slow continuous "Ken Burns" drift so a static photo never feels frozen.
+ * Every scene stays mounted for the whole page, so this only actually runs
+ * (and only claims a GPU layer via will-change) while its own image is near
+ * the viewport -- otherwise all ~10 photos would be mid-animation at once,
+ * which measurably cost scroll smoothness for no visible benefit.
+ */
 .kenBurns {
-  animation: ken-burns 24s ease-in-out infinite alternate;
   transform-origin: center center;
+}
+
+.kenBurnsActive {
+  animation: ken-burns 24s ease-in-out infinite alternate;
   will-change: transform;
 }
 
@@ -33,7 +42,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .kenBurns {
+  .kenBurnsActive {
     animation: none;
   }
 }

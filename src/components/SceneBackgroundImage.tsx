@@ -1,4 +1,4 @@
-import { forwardRef } from "react";
+import { forwardRef, useEffect, useRef, useState } from "react";
 import styles from "./SceneBackgroundImage.module.css";
 
 interface SceneBackgroundImageProps {
@@ -21,6 +21,27 @@ interface SceneBackgroundImageProps {
 export const SceneBackgroundImage = forwardRef<HTMLDivElement, SceneBackgroundImageProps>(
   ({ name, alt, priority = false, className, scrim = true, kenBurns = true }, ref) => {
     const base = `/images/scenes/${name}`;
+    const imgRef = useRef<HTMLImageElement | null>(null);
+    // Every scene stays mounted for the whole scroll, so a Ken Burns
+    // animation running unconditionally on all ~10 photos at once (each
+    // holding its own GPU layer via will-change) is a real, measured source
+    // of scroll jank -- only the scene actually near the viewport needs to
+    // be mid-drift, so the rest sit paused until they're about to be seen.
+    const [isNearViewport, setIsNearViewport] = useState(priority);
+
+    useEffect(() => {
+      if (!kenBurns) return;
+      const el = imgRef.current;
+      if (!el || typeof IntersectionObserver === "undefined") {
+        setIsNearViewport(true);
+        return;
+      }
+      const observer = new IntersectionObserver(([entry]) => setIsNearViewport(entry.isIntersecting), {
+        rootMargin: "10% 0px",
+      });
+      observer.observe(el);
+      return () => observer.disconnect();
+    }, [kenBurns, priority]);
 
     return (
       <div className={`${styles.wrap} ${className ?? ""}`} ref={ref}>
@@ -28,7 +49,10 @@ export const SceneBackgroundImage = forwardRef<HTMLDivElement, SceneBackgroundIm
           <source type="image/webp" srcSet={`${base}-sm.webp 480w, ${base}.webp 960w`} sizes="100vw" />
           <source type="image/jpeg" srcSet={`${base}-sm.jpg 480w, ${base}.jpg 960w`} sizes="100vw" />
           <img
-            className={`${styles.img} ${kenBurns ? styles.kenBurns : ""}`}
+            ref={imgRef}
+            className={`${styles.img} ${kenBurns ? styles.kenBurns : ""} ${
+              kenBurns && isNearViewport ? styles.kenBurnsActive : ""
+            }`}
             src={`${base}.jpg`}
             alt={alt}
             loading={priority ? "eager" : "lazy"}

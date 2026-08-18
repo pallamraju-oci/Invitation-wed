@@ -1,5 +1,5 @@
 import { useLayoutEffect, useRef, useState } from "react";
-import { gsap, prefersReducedMotion } from "../animations/gsapSetup";
+import { gsap, ScrollTrigger, prefersReducedMotion } from "../animations/gsapSetup";
 import { revealText, fadeIn, fadeOut, parallax } from "../animations/scrollAnimations";
 import { ParticleField } from "./decor";
 import { SceneBackgroundImage } from "./SceneBackgroundImage";
@@ -85,8 +85,26 @@ export function WeddingCeremonyScene() {
       reduced ? "+=0" : "+=0.2"
     );
 
+    // The countdown is `position: fixed` so it can sit centered in the
+    // viewport, but that also means it would otherwise stay on-screen while
+    // scrolling through every other page. This ties its visibility to the
+    // Ceremony section itself: it fades out the moment that section leaves
+    // the viewport (either direction) and fades back in when scrolled back.
+    const visibility = sectionRef.current
+      ? ScrollTrigger.create({
+          trigger: sectionRef.current,
+          start: "top bottom",
+          end: "bottom top",
+          onLeave: () => gsap.to(el, { opacity: 0, duration: 0.3, overwrite: "auto" }),
+          onLeaveBack: () => gsap.to(el, { opacity: 0, duration: 0.3, overwrite: "auto" }),
+          onEnter: () => gsap.to(el, { opacity: 1, duration: 0.3, overwrite: "auto" }),
+          onEnterBack: () => gsap.to(el, { opacity: 1, duration: 0.3, overwrite: "auto" }),
+        })
+      : null;
+
     return () => {
       tl.kill();
+      visibility?.kill();
     };
   }, [timeRevealed]);
 
