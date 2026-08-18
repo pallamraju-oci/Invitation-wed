@@ -6,7 +6,7 @@ import { SceneBackgroundImage } from "./SceneBackgroundImage";
 import { weddingData } from "../data/weddingData";
 import styles from "./HaldiScene.module.css";
 
-const haldiVibes = ["Turmeric Blessings", "Folk Music & Dance", "Family Traditions", "Golden Beginnings"];
+const haldiVibes = ["Turmeric Blessings", "Folk Music & Dance", "Family Traditions", "Lunch & Dinner"];
 
 export function HaldiScene() {
   const sectionRef = useRef<HTMLElement | null>(null);
