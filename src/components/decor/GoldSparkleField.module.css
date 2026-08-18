@@ -12,19 +12,23 @@
   background: radial-gradient(circle, #fff8e0 0%, #e6cd7d 45%, transparent 75%);
   box-shadow: 0 0 6px 1px rgba(230, 205, 125, 0.6);
   opacity: 0;
-  animation-name: twinkle;
+  animation-name: twinkle-drift;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
+  will-change: transform, opacity;
 }
 
-@keyframes twinkle {
+/* Fades/scales in and back out (twinkle) while easing across a small drift
+   offset (--dx/--dy, randomized per sparkle) and back -- a single keyframe
+   loop gives both the pulse and the wander without needing a separate timer. */
+@keyframes twinkle-drift {
   0%,
   100% {
     opacity: 0;
-    transform: scale(0.6);
+    transform: translate(0, 0) scale(0.6);
   }
   50% {
     opacity: 0.9;
-    transform: scale(1.15);
+    transform: translate(var(--dx), var(--dy)) scale(1.15);
   }
 }

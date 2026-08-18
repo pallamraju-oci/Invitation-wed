@@ -1,5 +1,4 @@
-import { useLayoutEffect, useMemo, useRef } from "react";
-import { gsap, ScrollTrigger, prefersReducedMotion } from "../../animations/gsapSetup";
+import { useMemo } from "react";
 import { usePrefersReducedMotion } from "../../hooks/usePrefersReducedMotion";
 import styles from "./GoldSparkleField.module.css";
 
@@ -9,9 +8,11 @@ interface Sparkle {
   size: number;
   delay: number;
   duration: number;
+  dx: number;
+  dy: number;
 }
 
-const SPARKLE_COUNT = 26;
+const SPARKLE_COUNT = 46;
 
 function buildSparkles(count: number): Sparkle[] {
   return Array.from({ length: count }).map(() => ({
@@ -20,48 +21,25 @@ function buildSparkles(count: number): Sparkle[] {
     size: 2 + Math.random() * 3,
     delay: Math.random() * 6,
     duration: 3 + Math.random() * 4,
+    dx: (Math.random() - 0.5) * 36,
+    dy: (Math.random() - 0.5) * 36,
   }));
 }
 
 /**
- * A fixed, page-wide layer of continuously twinkling gold sparkles that drifts
- * and fades very slightly as the whole page scrolls, so it reads as one
- * unbroken atmosphere rather than restarting per-section.
+ * A fixed, page-wide layer of gold sparkles that continuously twinkle and
+ * drift in place on their own CSS timers -- deliberately not tied to scroll
+ * position or any GSAP ScrollTrigger, so the atmosphere stays alive even
+ * while the visitor sits still reading a page.
  */
 export function GoldSparkleField() {
   const sparkles = useMemo(() => buildSparkles(SPARKLE_COUNT), []);
-  const containerRef = useRef<HTMLDivElement | null>(null);
   const reducedMotion = usePrefersReducedMotion();
-
-  useLayoutEffect(() => {
-    if (!containerRef.current || prefersReducedMotion()) return;
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        containerRef.current,
-        { yPercent: 0, opacity: 0.55 },
-        {
-          yPercent: -6,
-          opacity: 0.85,
-          ease: "none",
-          scrollTrigger: {
-            trigger: document.documentElement,
-            start: "top top",
-            end: "bottom bottom",
-            scrub: 1,
-          },
-        }
-      );
-    });
-    return () => {
-      ctx.revert();
-      ScrollTrigger.refresh();
-    };
-  }, []);
 
   if (reducedMotion) return null;
 
   return (
-    <div className={styles.field} ref={containerRef} aria-hidden="true">
+    <div className={styles.field} aria-hidden="true">
       {sparkles.map((s, i) => (
         <span
           key={i}
@@ -74,6 +52,8 @@ export function GoldSparkleField() {
               height: `${s.size}px`,
               animationDelay: `${s.delay}s`,
               animationDuration: `${s.duration}s`,
+              "--dx": `${s.dx}px`,
+              "--dy": `${s.dy}px`,
             } as React.CSSProperties
           }
         />
