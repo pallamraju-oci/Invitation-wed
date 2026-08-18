@@ -1,5 +1,5 @@
 import { useLayoutEffect, useRef } from "react";
-import { Sparkles, Utensils, Users, UtensilsCrossed } from "lucide-react";
+import { Sparkles, Utensils, Users, UtensilsCrossed, Home } from "lucide-react";
 import { gsap } from "../animations/gsapSetup";
 import { fadeIn, slideIn, parallax, fadeOut } from "../animations/scrollAnimations";
 import { ParticleField } from "./decor";
@@ -44,11 +44,14 @@ export function HaldiScene() {
 
       <div className={`scene__content ${styles.content}`}>
         <p className="eyebrow haldi-eyebrow">Haldi Ceremony</p>
-        <h2 className="heading-1 haldi-title">{weddingData.haldi.title}</h2>
+        {/* <h2 className="heading-1 haldi-title">{weddingData.haldi.title}</h2> */}
         <div className={`${styles.venueTag} haldi-details`}>
           {weddingData.haldi.date} · {weddingData.haldi.day}
         </div>
-        <div className={`${styles.venueTag} haldi-details`}>{weddingData.haldi.venueName}</div>
+        <div className={`${styles.venuePill} haldi-details`}>
+          <Home className={styles.venueIcon} size={16} strokeWidth={1.5} aria-hidden="true" />
+          <span>{weddingData.haldi.venueName}</span>
+        </div>
 
         <div className={styles.vibeGrid}>
           {haldiVibes.map(({ title, icon: Icon }) => (

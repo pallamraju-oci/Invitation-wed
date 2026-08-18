@@ -28,6 +28,26 @@
   color: var(--cream-100);
 }
 
+.venuePill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  padding: 0.4rem 1rem;
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  border-radius: 999px;
+  background: rgba(92, 54, 16, 0.35);
+  font-family: var(--font-display);
+  letter-spacing: 0.15em;
+  font-size: var(--fs-small);
+  color: var(--gold-200, var(--cream-100));
+}
+
+.venueIcon {
+  color: var(--gold-400);
+  flex-shrink: 0;
+}
+
 .vibeGrid {
   margin-top: clamp(1.2rem, 4vw, 2rem);
   display: grid;
