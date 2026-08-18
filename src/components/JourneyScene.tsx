@@ -1,6 +1,6 @@
 import { useLayoutEffect, useRef } from "react";
 import { gsap } from "../animations/gsapSetup";
-import { revealText, parallax } from "../animations/scrollAnimations";
+import { revealText, parallax, fadeOut } from "../animations/scrollAnimations";
 import { ParticleField } from "./decor";
 import { SceneBackgroundImage } from "./SceneBackgroundImage";
 import { weddingData } from "../data/weddingData";
@@ -17,6 +17,7 @@ export function JourneyScene() {
       revealText(".journey-closing", el, { delay: 0.3 });
       parallax(".journey-bg", el, 7);
       parallax(".scene__content", el, 3);
+      fadeOut(".scene__content", el);
     }, sectionRef);
 
     return () => ctx.revert();

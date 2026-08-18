@@ -8,6 +8,8 @@ interface ScratchRevealProps {
   className?: string;
   /** Fraction (0-1) of the foil that must be cleared before it's fully removed. */
   revealThreshold?: number;
+  /** Fires once, the moment the foil is fully cleared (including the reduced-motion instant case). */
+  onRevealed?: () => void;
 }
 
 const SCRATCH_RADIUS = 24;
@@ -18,17 +20,31 @@ const SCRATCH_RADIUS = 24;
  * Falls back to instantly-revealed content under reduced-motion, since the
  * gesture itself is the point and there's no accessible equivalent for it.
  */
-export function ScratchReveal({ children, label = "Scratch to Reveal", className, revealThreshold = 0.55 }: ScratchRevealProps) {
+export function ScratchReveal({
+  children,
+  label = "Scratch to Reveal",
+  className,
+  revealThreshold = 0.55,
+  onRevealed,
+}: ScratchRevealProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const drawingRef = useRef(false);
   const lastPointRef = useRef<{ x: number; y: number } | null>(null);
+  const hasFiredRevealRef = useRef(false);
   const reducedMotion = usePrefersReducedMotion();
   const [revealed, setRevealed] = useState(reducedMotion);
+
+  const fireRevealed = () => {
+    if (hasFiredRevealRef.current) return;
+    hasFiredRevealRef.current = true;
+    onRevealed?.();
+  };
 
   useEffect(() => {
     if (reducedMotion) {
       setRevealed(true);
+      fireRevealed();
       return;
     }
 
@@ -113,6 +129,7 @@ export function ScratchReveal({ children, label = "Scratch to Reveal", className
       lastPointRef.current = null;
       if (clearedFraction() >= revealThreshold) {
         setRevealed(true);
+        fireRevealed();
       }
     };
 

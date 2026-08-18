@@ -1,6 +1,6 @@
 import { useLayoutEffect, useRef } from "react";
 import { gsap } from "../animations/gsapSetup";
-import { fadeIn, scaleIn, parallax } from "../animations/scrollAnimations";
+import { fadeIn, scaleIn, parallax, fadeOut } from "../animations/scrollAnimations";
 import { ParticleField } from "./decor";
 import { SceneBackgroundImage } from "./SceneBackgroundImage";
 import { weddingData } from "../data/weddingData";
@@ -17,6 +17,7 @@ export function CoupleScene() {
       fadeIn(".couple-divider", el, { delay: 0.2 });
       parallax(".couple-bg", el, 6);
       parallax(".scene__content", el, 3);
+      fadeOut(".scene__content", el);
     }, sectionRef);
 
     return () => ctx.revert();

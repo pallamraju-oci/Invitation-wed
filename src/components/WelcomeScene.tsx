@@ -1,6 +1,6 @@
 import { useLayoutEffect, useRef } from "react";
 import { gsap } from "../animations/gsapSetup";
-import { revealText, parallax } from "../animations/scrollAnimations";
+import { revealText, parallax, fadeOut } from "../animations/scrollAnimations";
 import { ParticleField } from "./decor";
 import { SceneBackgroundImage } from "./SceneBackgroundImage";
 import { weddingData } from "../data/weddingData";
@@ -15,6 +15,7 @@ export function WelcomeScene() {
     const ctx = gsap.context(() => {
       revealText(".welcome-line", el);
       parallax(".scene__content", el, 3);
+      fadeOut(".scene__content", el);
     }, sectionRef);
     return () => ctx.revert();
   }, []);

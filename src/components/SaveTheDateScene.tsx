@@ -1,6 +1,6 @@
 import { useLayoutEffect, useRef } from "react";
 import { gsap } from "../animations/gsapSetup";
-import { scaleIn, fadeIn, parallax } from "../animations/scrollAnimations";
+import { scaleIn, fadeIn, parallax, fadeOut } from "../animations/scrollAnimations";
 import { SceneBackgroundImage } from "./SceneBackgroundImage";
 import { weddingData } from "../data/weddingData";
 import styles from "./SaveTheDateScene.module.css";
@@ -17,6 +17,7 @@ export function SaveTheDateScene() {
       scaleIn(".std-card", el, { duration: 1.3 });
       parallax(".std-bg", el, 5);
       parallax(".scene__content", el, 3);
+      fadeOut(".scene__content", el);
     }, sectionRef);
     return () => ctx.revert();
   }, []);

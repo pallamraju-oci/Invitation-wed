@@ -1,7 +1,7 @@
 import { useLayoutEffect, useRef } from "react";
 import { QRCodeSVG } from "qrcode.react";
 import { gsap } from "../animations/gsapSetup";
-import { fadeIn, slideIn, parallax } from "../animations/scrollAnimations";
+import { fadeIn, slideIn, parallax, fadeOut } from "../animations/scrollAnimations";
 import { ParticleField } from "./decor";
 import { SceneBackgroundImage } from "./SceneBackgroundImage";
 import { weddingData } from "../data/weddingData";
@@ -19,6 +19,7 @@ export function VenueScene() {
       fadeIn(".venue-address", el, { delay: 0.15 });
       slideIn(".venue-qr", el, "up", 40, { delay: 0.1 });
       parallax(".scene__content", el, 3);
+      fadeOut(".scene__content", el);
     }, sectionRef);
     return () => ctx.revert();
   }, []);

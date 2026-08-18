@@ -14,6 +14,7 @@ export interface WeddingData {
   weddingDate: string;
   weddingDay: string;
   weddingTime: string;
+  weddingDateTimeISO: string;
   invocation: string;
   tagline: string;
   welcomeMessage: string;
@@ -45,6 +46,8 @@ export const weddingData: WeddingData = {
   weddingDate: "30 August 2026",
   weddingDay: "Sunday",
   weddingTime: "11:27 PM",
+  /** Sumuhurtham moment, IST -- used as the live countdown target. */
+  weddingDateTimeISO: "2026-08-30T23:27:00+05:30",
   invocation: "ఓం శ్రీ గణేశాయ నమః",
   tagline: "A love story written in destiny",
   welcomeMessage:

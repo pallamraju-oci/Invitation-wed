@@ -1,7 +1,7 @@
 import { useLayoutEffect, useRef } from "react";
 import { Sparkles, Utensils, Users, UtensilsCrossed } from "lucide-react";
 import { gsap } from "../animations/gsapSetup";
-import { fadeIn, slideIn, parallax } from "../animations/scrollAnimations";
+import { fadeIn, slideIn, parallax, fadeOut } from "../animations/scrollAnimations";
 import { ParticleField } from "./decor";
 import { SceneBackgroundImage } from "./SceneBackgroundImage";
 import { weddingData } from "../data/weddingData";
@@ -27,6 +27,7 @@ export function HaldiScene() {
       slideIn(".haldi-vibe-left", el, "left", 70, { delay: 0.2, stagger: 0.15 });
       slideIn(".haldi-vibe-right", el, "right", 70, { delay: 0.2, stagger: 0.15 });
       parallax(".scene__content", el, 3);
+      fadeOut(".scene__content", el);
     }, sectionRef);
     return () => ctx.revert();
   }, []);

@@ -1,14 +1,18 @@
-import { useLayoutEffect, useRef } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { gsap } from "../animations/gsapSetup";
-import { revealText, parallax } from "../animations/scrollAnimations";
+import { revealText, fadeIn, fadeOut, parallax } from "../animations/scrollAnimations";
 import { ParticleField } from "./decor";
 import { SceneBackgroundImage } from "./SceneBackgroundImage";
 import { ScratchReveal } from "./ScratchReveal";
+import { CountdownTimer } from "./CountdownTimer";
 import { weddingData } from "../data/weddingData";
 import styles from "./WeddingCeremonyScene.module.css";
 
+const sumuhurtham = new Date(weddingData.weddingDateTimeISO);
+
 export function WeddingCeremonyScene() {
   const sectionRef = useRef<HTMLElement | null>(null);
+  const [timeRevealed, setTimeRevealed] = useState(false);
 
   useLayoutEffect(() => {
     if (!sectionRef.current) return;
@@ -23,6 +27,8 @@ export function WeddingCeremonyScene() {
           scrollTrigger: { trigger: el, start: "top 70%", toggleActions: "play none none reverse" },
         }
       );
+      fadeIn(".ceremony-header-text", el);
+      fadeOut(".ceremony-header", el);
       revealText(".ceremony-line", el);
       parallax(".ceremony-line", el, 3);
     }, sectionRef);
@@ -39,14 +45,25 @@ export function WeddingCeremonyScene() {
       />
       <ParticleField variant="ember" count={6} />
 
+      <div className={`${styles.topHeader} ceremony-header`}>
+        <p className="eyebrow ceremony-header-text">Wedding Ceremony</p>
+      </div>
+
       <div className={`${styles.dateBlock} ceremony-line`}>
-        <p className="eyebrow">Wedding Ceremony</p>
-        <ScratchReveal label="Scratch to Reveal" className={`royal-card ${styles.scratchCard}`}>
-          <div className={styles.dateTimeGroup}>
-            <p className={`meta-datetime ${styles.dateLine}`}>{weddingData.weddingDate.toUpperCase()}</p>
-            <p className={`meta-datetime ${styles.dateLine}`}>Sumuhurtham &middot; {weddingData.weddingTime}</p>
-          </div>
+        <ScratchReveal
+          label="Scratch to Reveal"
+          className={`royal-card ${styles.scratchCard}`}
+          onRevealed={() => setTimeRevealed(true)}
+        >
+          <p className={`meta-datetime ${styles.dateLine}`}>Sumuhurtham &middot; {weddingData.weddingTime}</p>
         </ScratchReveal>
+
+        {timeRevealed && (
+          <div className={styles.countdownWrap}>
+            <p className={styles.countdownLabel}>Counting down to the Sumuhurtham</p>
+            <CountdownTimer target={sumuhurtham} />
+          </div>
+        )}
       </div>
     </section>
   );
