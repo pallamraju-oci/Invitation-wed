@@ -1,6 +1,6 @@
 import { useLayoutEffect, useRef } from "react";
 import { gsap } from "../animations/gsapSetup";
-import { revealText } from "../animations/scrollAnimations";
+import { revealText, parallax } from "../animations/scrollAnimations";
 import { ParticleField } from "./decor";
 import { SceneBackgroundImage } from "./SceneBackgroundImage";
 import { weddingData } from "../data/weddingData";
@@ -23,6 +23,7 @@ export function WeddingCeremonyScene() {
         }
       );
       revealText(".ceremony-line", el);
+      parallax(".ceremony-line", el, 3);
     }, sectionRef);
 
     return () => ctx.revert();

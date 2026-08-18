@@ -16,6 +16,7 @@ export function CoupleScene() {
       scaleIn(".couple-names", el, { duration: 1.4 });
       fadeIn(".couple-divider", el, { delay: 0.2 });
       parallax(".couple-bg", el, 6);
+      parallax(".scene__content", el, 3);
     }, sectionRef);
 
     return () => ctx.revert();

@@ -16,6 +16,7 @@ export function JourneyScene() {
       revealText(".journey-line", el);
       revealText(".journey-closing", el, { delay: 0.3 });
       parallax(".journey-bg", el, 7);
+      parallax(".scene__content", el, 3);
     }, sectionRef);
 
     return () => ctx.revert();

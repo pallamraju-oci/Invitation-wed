@@ -28,6 +28,7 @@ export function WeddingHero() {
 
       if (sectionRef.current) {
         parallax(".hero-bg", sectionRef.current, 8);
+        parallax(".hero-content", sectionRef.current, 3);
         fadeOut(".hero-content, .hero-scroll-hint", sectionRef.current);
       }
     }, sectionRef);

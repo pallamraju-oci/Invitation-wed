@@ -14,6 +14,7 @@ export function ElephantProcessionScene() {
     const ctx = gsap.context(() => {
       revealText(".procession-line", el);
       parallax(".procession-bg", el, 8);
+      parallax(".scene__content", el, 3);
     }, sectionRef);
     return () => ctx.revert();
   }, []);

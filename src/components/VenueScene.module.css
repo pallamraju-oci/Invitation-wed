@@ -20,6 +20,19 @@
   border: 3px solid var(--gold-500);
   border-radius: 18px;
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.25s var(--ease-soft), box-shadow 0.25s var(--ease-soft);
+}
+
+.qrCard:hover,
+.qrCard:focus-visible {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 22px 48px rgba(0, 0, 0, 0.55);
+}
+
+.qrCard:active {
+  transform: translateY(0) scale(0.98);
 }
 
 .qrLabel {
@@ -28,13 +41,14 @@
   letter-spacing: 0.28em;
   text-transform: uppercase;
   color: var(--purple-800);
+  text-align: center;
 }
 
 .qrLink {
+  font-family: var(--font-display);
   font-size: 0.75rem;
+  letter-spacing: 0.08em;
   color: var(--purple-700);
   text-decoration: underline;
-  word-break: break-all;
-  max-width: 200px;
   text-align: center;
 }

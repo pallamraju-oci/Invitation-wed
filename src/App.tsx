@@ -5,7 +5,6 @@ import { CoupleScene } from "./components/CoupleScene";
 import { JourneyScene } from "./components/JourneyScene";
 import { SaveTheDateScene } from "./components/SaveTheDateScene";
 import { HaldiScene } from "./components/HaldiScene";
-import { ElephantProcessionScene } from "./components/ElephantProcessionScene";
 import { WeddingCeremonyScene } from "./components/WeddingCeremonyScene";
 import { VenueScene } from "./components/VenueScene";
 import { BlessingsScene } from "./components/BlessingsScene";
@@ -23,7 +22,7 @@ function App() {
         <CoupleScene />
         <JourneyScene />
         <HaldiScene />
-        <ElephantProcessionScene />
+        {/* <ElephantProcessionScene /> */}
         <WeddingCeremonyScene />
         <VenueScene />
         <BlessingsScene />

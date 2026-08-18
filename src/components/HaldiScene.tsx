@@ -1,6 +1,6 @@
 import { useLayoutEffect, useRef } from "react";
 import { gsap } from "../animations/gsapSetup";
-import { fadeIn, slideIn } from "../animations/scrollAnimations";
+import { fadeIn, slideIn, parallax } from "../animations/scrollAnimations";
 import { ParticleField } from "./decor";
 import { SceneBackgroundImage } from "./SceneBackgroundImage";
 import { weddingData } from "../data/weddingData";
@@ -18,7 +18,9 @@ export function HaldiScene() {
       fadeIn(".haldi-eyebrow", el);
       slideIn(".haldi-title", el, "up", 40);
       fadeIn(".haldi-details", el, { delay: 0.15 });
-      fadeIn(".haldi-vibe-card", el, { delay: 0.1, stagger: 0.15 });
+      slideIn(".haldi-vibe-left", el, "left", 70, { delay: 0.2, stagger: 0.15 });
+      slideIn(".haldi-vibe-right", el, "right", 70, { delay: 0.2, stagger: 0.15 });
+      parallax(".scene__content", el, 3);
     }, sectionRef);
     return () => ctx.revert();
   }, []);
@@ -43,8 +45,11 @@ export function HaldiScene() {
         <div className={`${styles.venueTag} haldi-details`}>{weddingData.haldi.venueName}</div>
 
         <div className={styles.vibeGrid}>
-          {haldiVibes.map((title) => (
-            <div key={title} className={`royal-card ${styles.vibeCard} haldi-vibe-card`}>
+          {haldiVibes.map((title, i) => (
+            <div
+              key={title}
+              className={`royal-card ${styles.vibeCard} ${i % 2 === 0 ? "haldi-vibe-left" : "haldi-vibe-right"}`}
+            >
               <p className={styles.vibeTitle}>{title}</p>
             </div>
           ))}

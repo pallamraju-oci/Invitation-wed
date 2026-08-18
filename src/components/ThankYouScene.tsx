@@ -1,6 +1,6 @@
 import { useLayoutEffect, useRef } from "react";
 import { gsap } from "../animations/gsapSetup";
-import { fadeIn, revealText } from "../animations/scrollAnimations";
+import { fadeIn, revealText, parallax } from "../animations/scrollAnimations";
 import { ParticleField } from "./decor";
 import { SceneBackgroundImage } from "./SceneBackgroundImage";
 import { weddingData } from "../data/weddingData";
@@ -16,6 +16,7 @@ export function ThankYouScene() {
       fadeIn(".ty-eyebrow", el);
       revealText(".ty-message", el, { delay: 0.15 });
       fadeIn(".ty-signature", el, { delay: 0.4 });
+      parallax(".scene__content", el, 3);
     }, sectionRef);
     return () => ctx.revert();
   }, []);

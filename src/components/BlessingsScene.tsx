@@ -1,6 +1,6 @@
 import { useLayoutEffect, useRef } from "react";
 import { gsap } from "../animations/gsapSetup";
-import { revealText } from "../animations/scrollAnimations";
+import { revealText, parallax } from "../animations/scrollAnimations";
 import { Diya, ParticleField } from "./decor";
 import { SceneBackgroundImage } from "./SceneBackgroundImage";
 import { weddingData } from "../data/weddingData";
@@ -14,6 +14,7 @@ export function BlessingsScene() {
     const el = sectionRef.current;
     const ctx = gsap.context(() => {
       revealText(".blessings-line", el);
+      parallax(".scene__content", el, 3);
     }, sectionRef);
     return () => ctx.revert();
   }, []);

@@ -1,7 +1,7 @@
 import { useLayoutEffect, useRef } from "react";
 import { QRCodeSVG } from "qrcode.react";
 import { gsap } from "../animations/gsapSetup";
-import { fadeIn, slideIn } from "../animations/scrollAnimations";
+import { fadeIn, slideIn, parallax } from "../animations/scrollAnimations";
 import { ParticleField } from "./decor";
 import { SceneBackgroundImage } from "./SceneBackgroundImage";
 import { weddingData } from "../data/weddingData";
@@ -18,6 +18,7 @@ export function VenueScene() {
       slideIn(".venue-name", el, "up", 30);
       fadeIn(".venue-address", el, { delay: 0.15 });
       slideIn(".venue-qr", el, "up", 40, { delay: 0.1 });
+      parallax(".scene__content", el, 3);
     }, sectionRef);
     return () => ctx.revert();
   }, []);
@@ -36,8 +37,14 @@ export function VenueScene() {
         <h2 className="heading-1 venue-name">{weddingData.wedding.venue}</h2>
         <p className={`body-copy venue-address ${styles.address}`}>{weddingData.wedding.address}</p>
 
-        <div className={`${styles.qrCard} venue-qr`}>
-          <span className={styles.qrLabel}>Scan to Locate the Venue</span>
+        <a
+          href={weddingData.wedding.mapsUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`${styles.qrCard} venue-qr`}
+          aria-label="Open the wedding venue in Google Maps"
+        >
+          <span className={styles.qrLabel}>Scan or Tap to Locate the Venue</span>
           <QRCodeSVG
             value={weddingData.wedding.mapsUrl}
             size={148}
@@ -49,7 +56,8 @@ export function VenueScene() {
             role="img"
             aria-label="QR code to wedding venue location"
           />
-        </div>
+          <span className={styles.qrLink}>Open in Google Maps</span>
+        </a>
       </div>
     </section>
   );

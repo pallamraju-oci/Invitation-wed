@@ -51,7 +51,11 @@ export const weddingData: WeddingData = {
     "Together with their families, we joyfully invite you to celebrate the wedding of two hearts, two families, and a beautiful journey of a lifetime.",
   journey: {
     heading: "Our Journey",
-    lines: ["From strangers to friends, from friends to love,", "and from love to forever."],
+    lines: [
+      "From strangers to friends, from friends to love,",
+      "and from love to forever.",
+      "Every little moment brought us closer, every memory made us stronger.",
+    ],
     closing: "Thank you for being a part of our beautiful story.",
   },
   haldi: {

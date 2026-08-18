@@ -16,6 +16,7 @@ export function SaveTheDateScene() {
       fadeIn(".std-eyebrow", el);
       scaleIn(".std-card", el, { duration: 1.3 });
       parallax(".std-bg", el, 5);
+      parallax(".scene__content", el, 3);
     }, sectionRef);
     return () => ctx.revert();
   }, []);
