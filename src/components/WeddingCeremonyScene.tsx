@@ -115,7 +115,6 @@ export function WeddingCeremonyScene() {
 
       {timeRevealed && (
         <div className={`royal-card ${styles.countdownWrap}`} ref={countdownRef}>
-          <p className={styles.countdownLabel}>Counting down to the Sumuhurtham</p>
           <CountdownTimer target={sumuhurtham} />
         </div>
       )}

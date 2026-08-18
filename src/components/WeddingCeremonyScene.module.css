@@ -65,11 +65,3 @@
   width: max-content;
   max-width: 90vw;
 }
-
-.countdownLabel {
-  font-family: var(--font-display);
-  font-size: var(--fs-small);
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--gold-200);
-}
