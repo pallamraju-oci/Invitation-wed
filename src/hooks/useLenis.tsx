@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from "react";
 import Lenis from "lenis";
-import { gsap, ScrollTrigger, ensureGsapRegistered } from "../animations/gsapSetup";
+import { gsap, ScrollTrigger } from "../animations/gsapSetup";
 import { usePrefersReducedMotion } from "./usePrefersReducedMotion";
 
 const LenisContext = createContext<Lenis | null>(null);
@@ -18,7 +18,6 @@ export function LenisProvider({ children }: { children: ReactNode }) {
   const instanceRef = useRef<Lenis | null>(null);
 
   useEffect(() => {
-    ensureGsapRegistered();
     if (reducedMotion) {
       setInstance(null);
       return;

@@ -30,18 +30,23 @@ export function fadeIn(target: Target, trigger: Element, vars: gsap.TweenVars = 
 
 /** Fade an element out as it leaves the viewport upward. */
 export function fadeOut(target: Target, trigger: Element, vars: gsap.TweenVars = {}): gsap.core.Tween {
-  return gsap.to(target, {
-    opacity: 0,
-    y: -30,
-    ease: "power1.in",
-    scrollTrigger: {
-      trigger,
-      start: "bottom 40%",
-      end: "bottom top",
-      scrub: true,
-    },
-    ...vars,
-  });
+  return gsap.fromTo(
+    target,
+    { opacity: 1, y: 0 },
+    {
+      opacity: 0,
+      y: -30,
+      ease: "power1.in",
+      scrollTrigger: {
+        trigger,
+        start: "bottom 40%",
+        end: "bottom top",
+        scrub: true,
+        invalidateOnRefresh: true,
+      },
+      ...vars,
+    }
+  );
 }
 
 /**
