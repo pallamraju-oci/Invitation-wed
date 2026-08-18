@@ -136,9 +136,8 @@ export function slideIn(
 
 /**
  * Progressive line-by-line reveal for prose — lines stagger in top-to-bottom
- * (DOM order), each one converging in from alternating left/right sides
- * rather than a uniform rise, so multi-line passages read as a directional
- * sweep down the block instead of a flat fade.
+ * (DOM order), each floating up from below as it fades in, so a multi-line
+ * passage reads as a cascade rising into place down the block.
  */
 export function revealText(target: Target, trigger: Element, vars: gsap.TweenVars = {}): gsap.core.Tween {
   const reduced = prefersReducedMotion();
@@ -146,12 +145,12 @@ export function revealText(target: Target, trigger: Element, vars: gsap.TweenVar
     target,
     {
       opacity: 0,
-      x: reduced ? 0 : (i: number) => (i % 2 === 0 ? -36 : 36),
+      y: reduced ? 0 : 32,
       filter: reduced ? "none" : "blur(4px)",
     },
     {
       opacity: 1,
-      x: 0,
+      y: 0,
       filter: "blur(0px)",
       duration: 0.85,
       stagger: 0.18,

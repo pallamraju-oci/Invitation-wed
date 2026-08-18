@@ -24,8 +24,7 @@ export function HaldiScene() {
       fadeIn(".haldi-eyebrow", el);
       slideIn(".haldi-title", el, "up", 40);
       fadeIn(".haldi-details", el, { delay: 0.15 });
-      slideIn(".haldi-vibe-left", el, "left", 70, { delay: 0.2, stagger: 0.15 });
-      slideIn(".haldi-vibe-right", el, "right", 70, { delay: 0.2, stagger: 0.15 });
+      slideIn(".haldi-vibe-card", el, "up", 50, { delay: 0.2, stagger: 0.15 });
       parallax(".scene__content", el, 3);
       fadeOut(".scene__content", el);
     }, sectionRef);
@@ -52,11 +51,8 @@ export function HaldiScene() {
         <div className={`${styles.venueTag} haldi-details`}>{weddingData.haldi.venueName}</div>
 
         <div className={styles.vibeGrid}>
-          {haldiVibes.map(({ title, icon: Icon }, i) => (
-            <div
-              key={title}
-              className={`royal-card ${styles.vibeCard} ${i % 2 === 0 ? "haldi-vibe-left" : "haldi-vibe-right"}`}
-            >
+          {haldiVibes.map(({ title, icon: Icon }) => (
+            <div key={title} className={`royal-card ${styles.vibeCard} haldi-vibe-card`}>
               <Icon className={styles.vibeIcon} size={22} strokeWidth={1.5} aria-hidden="true" />
               <p className={styles.vibeTitle}>{title}</p>
             </div>
