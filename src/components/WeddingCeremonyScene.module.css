@@ -41,29 +41,29 @@
   white-space: nowrap;
 }
 
+/*
+ * Starts anchored at the same bottom-of-frame spot the old in-flow layout
+ * used to place it -- the JS-driven move-to-center tween then takes over,
+ * measuring this real on-screen position as its starting point. Rendered as
+ * a sibling of .dateBlock (not a child) specifically so it never ends up
+ * nested inside an element that has a scroll-driven `transform` applied to
+ * it: a `transform` on any ancestor becomes the containing block for a
+ * `position: fixed` descendant, which would silently break the "50% of the
+ * viewport" centering math the JS relies on.
+ */
 .countdownWrap {
+  position: absolute;
+  left: 50%;
+  bottom: calc(clamp(4.8%, 9.6vh, 11.2%) - 0.3rem);
+  transform: translateX(-50%);
+  z-index: 30;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
-  animation: countdown-appear 0.7s ease both;
-}
-
-@keyframes countdown-appear {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .countdownWrap {
-    animation: none;
-  }
+  text-align: center;
+  width: max-content;
+  max-width: 90vw;
 }
 
 .countdownLabel {
