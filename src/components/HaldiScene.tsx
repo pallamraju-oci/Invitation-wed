@@ -1,4 +1,5 @@
 import { useLayoutEffect, useRef } from "react";
+import { Sparkles, Utensils, Users, UtensilsCrossed } from "lucide-react";
 import { gsap } from "../animations/gsapSetup";
 import { fadeIn, slideIn, parallax } from "../animations/scrollAnimations";
 import { ParticleField } from "./decor";
@@ -6,7 +7,12 @@ import { SceneBackgroundImage } from "./SceneBackgroundImage";
 import { weddingData } from "../data/weddingData";
 import styles from "./HaldiScene.module.css";
 
-const haldiVibes = ["Turmeric Blessings", "Folk Music & Dance", "Family Traditions", "Lunch & Dinner"];
+const haldiVibes = [
+  { title: "Turmeric Blessings", icon: Sparkles },
+  { title: "Lunch", icon: Utensils },
+  { title: "Family Traditions", icon: Users },
+  { title: "Dinner", icon: UtensilsCrossed },
+];
 
 export function HaldiScene() {
   const sectionRef = useRef<HTMLElement | null>(null);
@@ -45,11 +51,12 @@ export function HaldiScene() {
         <div className={`${styles.venueTag} haldi-details`}>{weddingData.haldi.venueName}</div>
 
         <div className={styles.vibeGrid}>
-          {haldiVibes.map((title, i) => (
+          {haldiVibes.map(({ title, icon: Icon }, i) => (
             <div
               key={title}
               className={`royal-card ${styles.vibeCard} ${i % 2 === 0 ? "haldi-vibe-left" : "haldi-vibe-right"}`}
             >
+              <Icon className={styles.vibeIcon} size={22} strokeWidth={1.5} aria-hidden="true" />
               <p className={styles.vibeTitle}>{title}</p>
             </div>
           ))}
