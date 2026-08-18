@@ -3,6 +3,7 @@ import { gsap } from "../animations/gsapSetup";
 import { revealText, parallax } from "../animations/scrollAnimations";
 import { ParticleField } from "./decor";
 import { SceneBackgroundImage } from "./SceneBackgroundImage";
+import { ScratchReveal } from "./ScratchReveal";
 import { weddingData } from "../data/weddingData";
 import styles from "./WeddingCeremonyScene.module.css";
 
@@ -40,10 +41,12 @@ export function WeddingCeremonyScene() {
 
       <div className={`${styles.dateBlock} ceremony-line`}>
         <p className="eyebrow">Wedding Ceremony</p>
-        <div className={styles.dateTimeGroup}>
-          <p className={`meta-datetime ${styles.dateLine}`}>{weddingData.weddingDate.toUpperCase()}</p>
-          <p className={`meta-datetime ${styles.dateLine}`}>Sumuhurtham &middot; {weddingData.weddingTime}</p>
-        </div>
+        <ScratchReveal label="Scratch to Reveal" className={`royal-card ${styles.scratchCard}`}>
+          <div className={styles.dateTimeGroup}>
+            <p className={`meta-datetime ${styles.dateLine}`}>{weddingData.weddingDate.toUpperCase()}</p>
+            <p className={`meta-datetime ${styles.dateLine}`}>Sumuhurtham &middot; {weddingData.weddingTime}</p>
+          </div>
+        </ScratchReveal>
       </div>
     </section>
   );

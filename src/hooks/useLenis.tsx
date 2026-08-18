@@ -27,6 +27,8 @@ export function LenisProvider({ children }: { children: ReactNode }) {
       duration: 1.35,
       easing: (t: number) => 1 - Math.pow(1 - t, 3),
       smoothWheel: true,
+      syncTouch: true,
+      syncTouchLerp: 0.075,
       touchMultiplier: 1.4,
     });
     instanceRef.current = lenis;

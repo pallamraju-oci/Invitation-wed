@@ -18,6 +18,11 @@
   max-width: 92vw;
 }
 
+.scratchCard {
+  margin-top: 0.2rem;
+  padding: clamp(1rem, 4vw, 1.4rem) clamp(1.2rem, 5vw, 1.8rem);
+}
+
 /* Tighter than .dateBlock's own gap so the date and time sit close together. */
 .dateTimeGroup {
   display: flex;

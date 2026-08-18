@@ -134,17 +134,26 @@ export function slideIn(
   });
 }
 
-/** Progressive word/line reveal for prose — staggers children with blur + rise. */
+/**
+ * Progressive line-by-line reveal for prose — lines stagger in top-to-bottom
+ * (DOM order), each one converging in from alternating left/right sides
+ * rather than a uniform rise, so multi-line passages read as a directional
+ * sweep down the block instead of a flat fade.
+ */
 export function revealText(target: Target, trigger: Element, vars: gsap.TweenVars = {}): gsap.core.Tween {
   const reduced = prefersReducedMotion();
   return gsap.fromTo(
     target,
-    { opacity: 0, y: reduced ? 0 : 24, filter: reduced ? "none" : "blur(4px)" },
+    {
+      opacity: 0,
+      x: reduced ? 0 : (i: number) => (i % 2 === 0 ? -36 : 36),
+      filter: reduced ? "none" : "blur(4px)",
+    },
     {
       opacity: 1,
-      y: 0,
+      x: 0,
       filter: "blur(0px)",
-      duration: 0.9,
+      duration: 0.85,
       stagger: 0.18,
       ease: "power2.out",
       scrollTrigger: {
