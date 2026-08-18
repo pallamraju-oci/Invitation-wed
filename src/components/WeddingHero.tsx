@@ -12,19 +12,19 @@ export function WeddingHero() {
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ delay: 0.3 });
-      tl.fromTo(".hero-namaste-text", { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" })
-        .to(".hero-namaste-wrap", { opacity: 0, duration: 0.6, ease: "power1.in" }, "+=0.6")
-        .fromTo(".hero-invocation", { opacity: 0, y: -18 }, { opacity: 1, y: 0, duration: 1, ease: "power2.out" })
+      const tl = gsap.timeline({ delay: 0.15 });
+      tl.fromTo(".hero-namaste-text", { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" })
+        .to(".hero-namaste-wrap", { opacity: 0, duration: 0.35, ease: "power1.in" }, "+=0.25")
+        .fromTo(".hero-invocation", { opacity: 0, y: -18 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" })
         .fromTo(
           ".hero-name",
-          { opacity: 0, y: 34, filter: "blur(10px)" },
-          { opacity: 1, y: 0, filter: "blur(0px)", duration: 1.1, stagger: 0.18, ease: "power2.out" },
-          "-=0.4"
+          { opacity: 0, y: 24, filter: "blur(6px)" },
+          { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.7, stagger: 0.1, ease: "power2.out" },
+          "-=0.25"
         )
-        .fromTo(".hero-date", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.9 }, "-=0.4")
-        .fromTo(".hero-tagline", { opacity: 0 }, { opacity: 1, duration: 1.1 }, "-=0.4")
-        .fromTo(".hero-scroll-hint", { opacity: 0 }, { opacity: 1, duration: 0.8 }, "-=0.3");
+        .fromTo(".hero-date", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.5 }, "-=0.25")
+        .fromTo(".hero-tagline", { opacity: 0 }, { opacity: 1, duration: 0.6 }, "-=0.25")
+        .fromTo(".hero-scroll-hint", { opacity: 0 }, { opacity: 1, duration: 0.5 }, "-=0.2");
 
       if (sectionRef.current) {
         parallax(".hero-bg", sectionRef.current, 8);
