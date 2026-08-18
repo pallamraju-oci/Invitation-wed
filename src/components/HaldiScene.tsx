@@ -43,7 +43,7 @@ export function HaldiScene() {
       <div className="scene__vignette" />
 
       <div className={`scene__content ${styles.content}`}>
-        <p className="eyebrow haldi-eyebrow">Pre-Wedding Ritual</p>
+        <p className="eyebrow haldi-eyebrow">Haldi Ceremony</p>
         <h2 className="heading-1 haldi-title">{weddingData.haldi.title}</h2>
         <div className={`${styles.venueTag} haldi-details`}>
           {weddingData.haldi.date} · {weddingData.haldi.day}
